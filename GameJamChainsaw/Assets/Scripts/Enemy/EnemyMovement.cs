@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     Transform playerTransform;              //transform du joueur
-    float moveSpeed = 2f;                   //vitesse de déplacement
     Rigidbody2D rb;                         //rigidbody de l'ennemy (gameObject actuel)
     private Vector2 movement;               //pour faire bouger l'ennemi
+    public Enemy enemyScriptable;
 
     void Start()
     {
@@ -26,6 +26,6 @@ public class EnemyMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition((Vector2)transform.position + (movement * moveSpeed * Time.deltaTime)); //bouge l'ennemi
+        rb.MovePosition((Vector2)transform.position + (movement * enemyScriptable.speed * Time.deltaTime)); //bouge l'ennemi
     }
 }

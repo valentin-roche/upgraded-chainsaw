@@ -28,10 +28,6 @@ public class PlayerRotationController : MonoBehaviour
         direction.y = mousePosition.y - transform.position.y;
         direction = direction.normalized;
 
-        print("transform : " + transform.position);
-        print("mouse position : " + mousePosition);
-        print("direction : " + direction);
-
         // et on modifie directement le transform
         transform.up = direction;
     }
