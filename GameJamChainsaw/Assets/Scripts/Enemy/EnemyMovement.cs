@@ -18,11 +18,14 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 direction = playerTransform.position - transform.position; //distance entre le player et l'ennemi
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //calcule l'angle dans lequel il doit se tourner
-        rb.rotation = angle; //change l'angle du rigidbody par rapport au calcul du dessus
-        direction.Normalize(); 
-        movement = direction;
+        if(playerTransform != null)
+        {
+            Vector3 direction = playerTransform.position - transform.position; //distance entre le player et l'ennemi
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //calcule l'angle dans lequel il doit se tourner
+            rb.rotation = angle; //change l'angle du rigidbody par rapport au calcul du dessus
+            direction.Normalize();
+            movement = direction;
+        }
     }
     private void FixedUpdate()
     {
