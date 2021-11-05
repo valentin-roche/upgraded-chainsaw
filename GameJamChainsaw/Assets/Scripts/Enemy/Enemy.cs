@@ -13,6 +13,7 @@ public enum Colors
 [CreateAssetMenu(fileName = "New enemy", menuName = "Enemy", order = 1)]
 public class Enemy : ScriptableObject
 {
+    public int id;              // Important, un id différent par monstre
     public int health;
     public float speed;
     public Colors color;
