@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    Transform playerTransform;  //transform du joueur
-    float moveSpeed = 2f; //vitesse de déplacement
-    Rigidbody2D rb; //rigidbody de l'ennemy (gameObject actuel)
-    private Vector2 movement; //pour faire bouger l'ennemi
+    Transform playerTransform;              //transform du joueur
+    float moveSpeed = 2f;                   //vitesse de déplacement
+    Rigidbody2D rb;                         //rigidbody de l'ennemy (gameObject actuel)
+    private Vector2 movement;               //pour faire bouger l'ennemi
+
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>(); // cherche le rigidbody2D du gameObject actuel
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //va chercher le transform du player
+        // Récupération des références
+        rb = gameObject.GetComponent<Rigidbody2D>(); 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 direction = playerTransform.position - transform.position; //distance entre le player et l'ennemi
@@ -22,7 +23,6 @@ public class EnemyMovement : MonoBehaviour
         rb.rotation = angle; //change l'angle du rigidbody par rapport au calcul du dessus
         direction.Normalize(); 
         movement = direction;
-        //transform.position = playerTransform.position;
     }
     private void FixedUpdate()
     {
