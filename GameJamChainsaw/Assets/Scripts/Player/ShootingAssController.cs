@@ -11,6 +11,8 @@ public class ShootingAssController : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;       // Référence sur le transform du joueur pour tirer dans la bonne direction
 
+    public Colors color = Colors.White;    // La couleur de la balle
+
     public float startReloadingTime;        // Durée de rechargement
     private float reloadingTime;            // Durée restante de rechargement 
 
@@ -37,7 +39,8 @@ public class ShootingAssController : MonoBehaviour
         // Si on tire et qu'on est pas en train de recharger, alors on tire vraiment
         if (Input.GetMouseButtonDown(0) && reloadingTime == startReloadingTime)
         {
-            Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
+            GameObject projectile = Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
+            projectile.GetComponent<BulletController>().SetColor(color);
             reloadingTime -= Time.deltaTime;
         }
     }
