@@ -28,19 +28,25 @@ public class ProjectorController : MonoBehaviour
         switch (color)
         {
             case Colors.White:
-                sprite.color = Color.white;
+                sprite.material.SetColor("Color", Color.white);
+                sprite.material.SetColor("_EmissionColor", Color.white);
+
                 break;
             case Colors.Red:
-                sprite.color = Color.red;
+                sprite.material.SetColor("_Color", Color.red);
+                sprite.material.SetColor("_EmissionColor", Color.red * 1.75f);
                 break;
             case Colors.Green:
-                sprite.color = Color.green;
+                sprite.material.SetColor("_Color", Color.green);
+                sprite.material.SetColor("_EmissionColor", Color.green * 1.75f);
                 break;
             case Colors.Blue:
-                sprite.color = Color.blue;
+                sprite.material.SetColor("_Color", Color.blue);
+                sprite.material.SetColor("_EmissionColor", Color.blue * 1.75f);
                 break;
             case Colors.Pink:
-                sprite.color = Color.magenta;
+                sprite.material.SetColor("_Color", Color.magenta);
+                sprite.material.SetColor("_EmissionColor", Color.magenta * 1.75f);
                 break;
         }
     }

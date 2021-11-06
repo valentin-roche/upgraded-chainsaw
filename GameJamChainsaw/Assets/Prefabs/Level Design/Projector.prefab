@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7238740023334890598}
   - component: {fileID: -4058834426643598737}
   - component: {fileID: 5376383928816179916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projector
   m_TagString: Projector
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e87bf499574512743ac952d71db5c2e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
