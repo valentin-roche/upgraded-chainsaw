@@ -38,5 +38,9 @@ public class WindController : MonoBehaviour
         {
             collision.GetComponent<EnemyCollisionControlerGeneric>().GetPushed(windEffectTime, pushFactor);
         }
+        if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
+        {
+            Die();
+        }
     }
 }

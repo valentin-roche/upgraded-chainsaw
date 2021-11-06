@@ -72,5 +72,9 @@ public class BulletController : MonoBehaviour
                 Die();
             }
         }
+        if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
+        {
+            Die();
+        }
     }
 }
