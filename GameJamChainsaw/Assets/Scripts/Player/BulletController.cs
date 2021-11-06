@@ -14,6 +14,8 @@ public class BulletController : MonoBehaviour
 
     private SpriteRenderer sprite;                                          // Référence sur le sprite
 
+    private bool dead = false;
+
     private void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
@@ -51,6 +53,7 @@ public class BulletController : MonoBehaviour
 
     public void Die()
     {
+        dead = true;
         Destroy(gameObject);
     }
 
@@ -63,8 +66,11 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<EnemyCollisionControlerGeneric>().GetHit(damage, color);
-            Die();
+            if(!dead)
+            {
+                collision.GetComponent<EnemyCollisionControlerGeneric>().GetHit(damage, color);
+                Die();
+            }
         }
     }
 }

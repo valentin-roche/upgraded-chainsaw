@@ -43,8 +43,6 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
 
     public void GetHit(int damage, Colors projectileColor)
     {
-        print("enemy : " + enemyScriptable.color);
-        print("projectileColor : " + projectileColor);
         if (enemyScriptable.color == projectileColor || enemyScriptable.color == Colors.White)
         {
             currentHealth -= damage;
@@ -58,8 +56,8 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
         spawnerController.DeathOfEnnemy(enemyScriptable.id);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
