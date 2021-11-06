@@ -10,14 +10,12 @@ public class WindController : MonoBehaviour
     public float windEffectTime;
     public float pushFactor;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         rb.velocity = transform.up * speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         lifetime -= Time.deltaTime;

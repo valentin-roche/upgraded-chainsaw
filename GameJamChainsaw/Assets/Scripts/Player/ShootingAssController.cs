@@ -45,4 +45,9 @@ public class ShootingAssController : MonoBehaviour
             reloadingTime -= Time.deltaTime;
         }
     }
+
+    public void ChangeColor(Colors colorProjector)
+    {
+        color = colorProjector;
+    }
 }

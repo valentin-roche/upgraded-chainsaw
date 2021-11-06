@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Door
   - SpawnPosition
+  - Projector
   layers:
   - Default
   - TransparentFX
