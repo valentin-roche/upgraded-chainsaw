@@ -10,36 +10,12 @@ public class BulletController : MonoBehaviour
     public float lifetime = 3f;                                             // La duree de vie
     public int damage;                                                      // Les dégats du projectile
 
-    private Colors color;
-
-    private SpriteRenderer sprite;                                          // Référence sur le sprite
-
     private bool dead = false;
 
     private void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         rb.velocity = -transform.up * speed;
-
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        switch (color)
-        {
-            case Colors.White:
-                sprite.color = Color.white;
-                break;
-            case Colors.Red:
-                sprite.color = Color.red;
-                break;
-            case Colors.Green:
-                sprite.color = Color.green;
-                break;
-            case Colors.Blue:
-                sprite.color = Color.blue;
-                break;
-            case Colors.Pink:
-                sprite.color = Color.magenta;
-                break;
-        }
     }
 
     private void Update()
@@ -57,18 +33,9 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetColor(Colors color)
-    {
-        this.color = color;
-    }
-
     public bool GetIsDead()
     {
         return dead;
     }
 
-    public Colors GetColor()
-    {
-        return color;
-    }
 }

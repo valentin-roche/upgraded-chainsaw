@@ -60,7 +60,7 @@ public class ShootingAssController : MonoBehaviour
     public void Shoot()
     {
         GameObject projectile = Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
-        projectile.GetComponent<BulletController>().SetColor(color);
+        projectile.GetComponentInChildren<BulletCollisionController>().SetColor(color);
         reloadingTime -= Time.deltaTime;
 	}
 

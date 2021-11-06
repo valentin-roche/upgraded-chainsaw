@@ -34,19 +34,19 @@ public class ProjectorController : MonoBehaviour
                 break;
             case Colors.Red:
                 sprite.material.SetColor("_Color", Color.red);
-                sprite.material.SetColor("_EmissionColor", Color.red * 1.75f);
+                sprite.material.SetColor("_EmissionColor", Color.red * 1.22f);
                 break;
             case Colors.Green:
                 sprite.material.SetColor("_Color", Color.green);
-                sprite.material.SetColor("_EmissionColor", Color.green * 1.75f);
+                sprite.material.SetColor("_EmissionColor", Color.green * 1.22f);
                 break;
             case Colors.Blue:
                 sprite.material.SetColor("_Color", Color.blue);
-                sprite.material.SetColor("_EmissionColor", Color.blue * 1.75f);
+                sprite.material.SetColor("_EmissionColor", Color.blue * 1.22f);
                 break;
             case Colors.Pink:
                 sprite.material.SetColor("_Color", Color.magenta);
-                sprite.material.SetColor("_EmissionColor", Color.magenta * 1.75f);
+                sprite.material.SetColor("_EmissionColor", Color.magenta * 1.22f);
                 break;
         }
     }
@@ -83,7 +83,6 @@ public class ProjectorController : MonoBehaviour
 
         if(collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
-            print("collision détectée");
             float mX = 0;
             float mY = 0;
             if(collision.gameObject.name.StartsWith("Top") || collision.gameObject.name.StartsWith("Bottom"))
