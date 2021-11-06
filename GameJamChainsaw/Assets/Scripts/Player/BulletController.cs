@@ -62,19 +62,13 @@ public class BulletController : MonoBehaviour
         this.color = color;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool GetIsDead()
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            if(!dead)
-            {
-                collision.GetComponent<EnemyCollisionControlerGeneric>().GetHit(damage, color);
-                Die();
-            }
-        }
-        if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
-        {
-            Die();
-        }
+        return dead;
+    }
+
+    public Colors GetColor()
+    {
+        return color;
     }
 }

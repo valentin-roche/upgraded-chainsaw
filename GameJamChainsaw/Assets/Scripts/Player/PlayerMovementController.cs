@@ -16,6 +16,8 @@ public class PlayerMovementController : MonoBehaviour
     private float dashTime;
 
     private Rigidbody2D rb;                    // Une référence sur le rigidbody2D du personnage pour pouvoir le déplacer
+    private Animator bodyAnimator;             // Une référence sur l'animator du body.
+    private WingsController wingsController;   // Une référence sur l'animator de l'aile gauche
 
     private float mx;                          // L'input en x du joueur
     private float my;                          // L'input en y du joueur
@@ -32,6 +34,8 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         // Récupération des références
+        bodyAnimator = GameObject.FindGameObjectWithTag("Body").GetComponent<Animator>();
+        wingsController = GetComponentInChildren<WingsController>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -44,6 +48,18 @@ public class PlayerMovementController : MonoBehaviour
             // Récupération des inputs et calcul du déplacement approprié
             mx = Input.GetAxisRaw("Horizontal");
             my = Input.GetAxisRaw("Vertical");
+
+            if(mx == 0 && my == 0)
+            {
+                bodyAnimator.SetBool("isMoving", false);
+                wingsController.ToggleMoveAnimation(false);
+            }
+            else
+            {
+                bodyAnimator.SetBool("isMoving", true);
+                wingsController.ToggleMoveAnimation(true);
+            }
+
             moveInput = new Vector2(mx, my);
             moveVelocity = moveInput.normalized * speed;
 

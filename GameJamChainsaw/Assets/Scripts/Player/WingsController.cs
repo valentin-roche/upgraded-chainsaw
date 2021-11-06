@@ -12,13 +12,14 @@ public class WingsController : MonoBehaviour
     public float startReloadingTimeWings;        // Durée de rechargement du coup d'ailes
     private float reloadingTimeWings;            // Durée restante de rechargement du coup d'ailes
 
-    // Start is called before the first frame update
+    private Animator[] wingsAnimator;            // Références sur les animators des ailes
+
     void Start()
     {
+        wingsAnimator = GetComponentsInChildren<Animator>();
         reloadingTimeWings = startReloadingTimeWings;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (reloadingTimeWings < startReloadingTimeWings)
@@ -34,6 +35,14 @@ public class WingsController : MonoBehaviour
         {
             GameObject projectile = Instantiate(wind, playerTransform.position, playerTransform.rotation);
             reloadingTimeWings -= Time.deltaTime;
+        }
+    }
+
+    public void ToggleMoveAnimation(bool toggle)
+    {
+        foreach (Animator animator in wingsAnimator)
+        {
+            animator.SetBool("isMoving", toggle);
         }
     }
 }
