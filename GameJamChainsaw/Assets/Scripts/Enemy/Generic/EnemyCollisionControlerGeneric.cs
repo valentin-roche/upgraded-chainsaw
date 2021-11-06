@@ -83,4 +83,9 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
             }
         }
     }
+
+    public void GetPushed(float windEffectTime, float pushFactor)
+    {
+        GetComponent<EnemyMovementControllerGeneric>().ApplyPushEffect(windEffectTime, pushFactor);
+    }
 }

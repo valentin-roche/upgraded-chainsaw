@@ -116,6 +116,7 @@ Transform:
   m_Children:
   - {fileID: 4365567796590311127}
   - {fileID: 4365567795695670747}
+  - {fileID: 7611851649150129356}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,4 +304,51 @@ MonoBehaviour:
   shot: {fileID: 7811567635198120777, guid: 5ddbf4add9013f44684565f5797f203f, type: 3}
   firingPoint: {fileID: 4365567796590311126}
   playerTransform: {fileID: 4365567796009991437}
+  color: 0
   startReloadingTime: 0.1
+--- !u!1 &4977603764189898349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7611851649150129356}
+  - component: {fileID: 5528662371901093292}
+  m_Layer: 0
+  m_Name: Wings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7611851649150129356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977603764189898349}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4365567796009991437}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5528662371901093292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977603764189898349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6714b64e673dd408a9e1d5c0bd652d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wind: {fileID: 8702812337425973441, guid: 3d95636eb9ca76e41ade72bf6fa490ab, type: 3}
+  playerTransform: {fileID: 4365567796009991437}
+  startReloadingTimeWings: 2
