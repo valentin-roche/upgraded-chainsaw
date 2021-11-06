@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Colors
 {
+    White,
     Red,
     Green,
     Blue,

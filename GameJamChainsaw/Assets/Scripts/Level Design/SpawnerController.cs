@@ -114,7 +114,7 @@ public class SpawnerController : MonoBehaviour
     {
         for (int indexEnemy = 0; indexEnemy < waves[currentWaveIndex].enemiesList.Length; indexEnemy++)
         {
-            if (waves[currentWaveIndex].enemiesList[indexEnemy].enemyPrefab.GetComponent<EnemyCollisionControler>().enemyScriptable.id == enemyId)
+            if (waves[currentWaveIndex].enemiesList[indexEnemy].enemyPrefab.GetComponent<EnemyCollisionControlerGeneric>().enemyScriptable.id == enemyId)
                 return indexEnemy;
         }
         return -1;
