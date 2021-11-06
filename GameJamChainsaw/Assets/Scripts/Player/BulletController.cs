@@ -7,10 +7,8 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D rb;                                                 // Le RigidBody du projectile
 
     public float speed;                                                     // La vitesse du projectile
-    public float lifetime = 3f;                                             // La duree de vie
+    //public float lifetime = 3f;                                             // La duree de vie
     public int damage;                                                      // Les dégats du projectile
-
-    private bool dead = false;
 
     private void Start()
     {
@@ -18,24 +16,18 @@ public class BulletController : MonoBehaviour
         rb.velocity = -transform.up * speed;
     }
 
-    private void Update()
+    public void SetSpeedToZero()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+    /*private void Update()
     {
         lifetime -= Time.deltaTime;
         if (lifetime <= 0f)
         {
             Die();    
         }
-    }
-
-    public void Die()
-    {
-        dead = true;
-        Destroy(gameObject);
-    }
-
-    public bool GetIsDead()
-    {
-        return dead;
-    }
+    }*/
 
 }
