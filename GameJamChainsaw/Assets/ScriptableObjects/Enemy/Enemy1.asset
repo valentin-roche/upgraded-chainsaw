@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   health: 5
-  speed: 1
+  speed: 3
   color: 0
