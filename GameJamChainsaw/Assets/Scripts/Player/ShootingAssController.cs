@@ -15,6 +15,7 @@ public class ShootingAssController : MonoBehaviour
 
     public float startReloadingTime;        // Durée de rechargement
     private float reloadingTime;            // Durée restante de rechargement 
+    
 
     // Start is called before the first frame update
     void Start()

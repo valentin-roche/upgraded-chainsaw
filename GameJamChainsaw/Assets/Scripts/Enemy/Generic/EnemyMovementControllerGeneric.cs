@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class EnemyMovementControllerGeneric : MonoBehaviour
 {
-    Transform playerTransform;              //transform du joueur
-    Rigidbody2D rb;                         //rigidbody de l'ennemy (gameObject actuel)
+    private Transform playerTransform;              //transform du joueur
+    private Rigidbody2D rb;                         //rigidbody de l'ennemy (gameObject actuel)
     private Vector2 movement;               //pour faire bouger l'ennemi
+
     public Enemy enemyScriptable;
+
+    private float windDurationLeft;
+    private float pushFactor;
 
     void Start()
     {
@@ -24,11 +28,33 @@ public class EnemyMovementControllerGeneric : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
             rb.rotation = angle; 
             direction.Normalize();
-            movement = direction;
+
+            if (windDurationLeft <= 0)
+            {
+                movement = direction;
+            }
+            else
+            {
+                windDurationLeft -= Time.deltaTime;
+                movement = - direction * pushFactor;
+            }
         }
     }
     private void FixedUpdate()
     {
-        rb.MovePosition((Vector2)transform.position + (movement * enemyScriptable.speed * Time.deltaTime)); 
+        if (windDurationLeft <= 0)
+        {
+            rb.MovePosition((Vector2)transform.position + (movement * enemyScriptable.speed * Time.deltaTime));
+        }
+        else
+        {
+            rb.MovePosition((Vector2)transform.position + (movement * Time.deltaTime));
+        }
+    }
+
+    public void ApplyPushEffect(float windEffectTime, float pushingFactor)
+    {
+        windDurationLeft += windEffectTime;
+        pushFactor = pushingFactor;
     }
 }
