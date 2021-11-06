@@ -330,7 +330,7 @@ MonoBehaviour:
   firingPoint: {fileID: 4365567796590311126}
   playerTransform: {fileID: 4365567796009991437}
   color: 0
-  startReloadingTime: 0.1
+  startReloadingTime: 0.2
 --- !u!95 &64368413970209366
 Animator:
   serializedVersion: 3
