@@ -14,12 +14,6 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     {
         currentHealth = enemyScriptable.health;
         spawnerController = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>();
-        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        foreach (GameObject door in doors)
-        {
-            Physics2D.IgnoreCollision(door.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        }
         sprite = GetComponentInChildren<SpriteRenderer>();
         switch(enemyScriptable.color)
         {
