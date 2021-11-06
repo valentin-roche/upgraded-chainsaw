@@ -5,13 +5,24 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public Wave[] waves;                                // Le tableau contenant toutes les vagues du niveau.
+    private int currentWaveIndex = 0;                   // L'index de la vague actuel dans le tableau.
     public double startTimeBetweenWaves = 5;            // Le temps entre deux vagues
     private double timeBetweenWaves;                    // Le compteur permettant d'attendre le temps entre deux vagues.
 
-    private int currentWaveIndex = 0;                   // L'index de la vague actuel dans le tableau.
+    private GameObject[] spawnPositions;                // Le tableau contenant les positions où les ennemis peuvent spawn.
+
+    public int maxIteration = 50;                       // Le nombre d'itération max pour trouver un ennemi à faire spawn.
+    private int currentIteration = 0;                   // Le nombre actuel d'itération
 
     void Start()
     {
+        spawnPositions = GameObject.FindGameObjectsWithTag("SpawnPosition");
+        if(spawnPositions.Length == 0)
+        {
+            print("T'as oublié de mettre des spawn positions en fils de ton spawner bg");
+            spawnPositions[0] = gameObject;         // J'aimerais que ce soit jamais call svp.
+        }
+
         timeBetweenWaves = startTimeBetweenWaves;
         if (waves.Length <= 0)
         {
@@ -33,6 +44,7 @@ public class SpawnerController : MonoBehaviour
                 waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns = waves[currentWaveIndex].enemiesList[indexEnemy].startTimeBetweenSpawns;
                 waves[currentWaveIndex].enemiesList[indexEnemy].leftToKill = waves[currentWaveIndex].enemiesList[indexEnemy].count;
                 waves[currentWaveIndex].enemiesList[indexEnemy].leftToSpawn = waves[currentWaveIndex].enemiesList[indexEnemy].count;
+                waves[currentWaveIndex].timeBetweenSpawns = waves[currentWaveIndex].startTimeBetweenSpawns;
             }
         }
         else
@@ -48,15 +60,28 @@ public class SpawnerController : MonoBehaviour
         {
             if (currentWaveIndex < waves.Length)
             {
+                bool shouldSpawn = false;
+
+                // Voir si on doit faire spawn un ennemi
+                if(waves[currentWaveIndex].timeBetweenSpawns == waves[currentWaveIndex].startTimeBetweenSpawns)
+                {
+                    shouldSpawn = true;
+                    waves[currentWaveIndex].timeBetweenSpawns -= Time.deltaTime;
+                }
+                else
+                {
+                    waves[currentWaveIndex].timeBetweenSpawns -= Time.deltaTime;
+                    if (waves[currentWaveIndex].timeBetweenSpawns <= 0)
+                    {
+                        waves[currentWaveIndex].timeBetweenSpawns = waves[currentWaveIndex].startTimeBetweenSpawns;
+                    }
+                }
+
+                // Mettre à jour le timer de spawn de chaque ennemi
                 for (int indexEnemy = 0; indexEnemy < waves[currentWaveIndex].enemiesList.Length; indexEnemy++)
                 {
-                    // Si le timer entre deux spawns n'est pas lancé, alors on spawn puis on le lance
-                    if (waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns == waves[currentWaveIndex].enemiesList[indexEnemy].startTimeBetweenSpawns)
-                    {
-                        SpawnNextEnnemy(indexEnemy);
-                        waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns -= Time.deltaTime;
-                    }
-                    else
+                    // Si le timer est lancé, alors on le continue
+                    if (waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns < waves[currentWaveIndex].enemiesList[indexEnemy].startTimeBetweenSpawns)
                     {
                         waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns -= Time.deltaTime;
                         if (waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns <= 0)
@@ -65,6 +90,21 @@ public class SpawnerController : MonoBehaviour
                         }
                     }
                 }
+
+                // Sélectionner l'ennemi qu'on va faire spawn (si on doit en faire spawn) en prenant un random avec un nombre max d'itération
+                while (shouldSpawn && currentIteration < maxIteration)
+                {
+                    int randIndex = Random.Range(0, waves[currentWaveIndex].enemiesList.Length);
+                    if (waves[currentWaveIndex].enemiesList[randIndex].timeBetweenSpawns == waves[currentWaveIndex].enemiesList[randIndex].startTimeBetweenSpawns && waves[currentWaveIndex].enemiesList[randIndex].leftToSpawn > 0)
+                    {
+                        SpawnNextEnnemy(randIndex);
+                        waves[currentWaveIndex].enemiesList[randIndex].timeBetweenSpawns -= Time.deltaTime;
+                        shouldSpawn = false;
+                    }
+
+                    currentIteration++;
+                }
+                currentIteration = 0;
             }
             else
                 Debug.Log("Il n'y a plus de vague");
@@ -125,7 +165,10 @@ public class SpawnerController : MonoBehaviour
     {
         if (waves[currentWaveIndex].enemiesList[indexOfEnemy].leftToSpawn > 0)
         {
-            Instantiate(waves[currentWaveIndex].enemiesList[indexOfEnemy].enemyPrefab, transform.position, Quaternion.identity);
+            // On choisit une position aléatoire parmis les positions où les ennemis peuvent spawn
+            int randPos = Random.Range(0, spawnPositions.Length);
+
+            Instantiate(waves[currentWaveIndex].enemiesList[indexOfEnemy].enemyPrefab, spawnPositions[randPos].transform.position, Quaternion.identity);
             waves[currentWaveIndex].enemiesList[indexOfEnemy].leftToSpawn--;
         }
         else

@@ -18,4 +18,8 @@ public class Wave : ScriptableObject
 {
     [Header("Enemy types and numbers")]
     public Enemies[] enemiesList;
+
+    [Header("Time between spawns")]
+    public float startTimeBetweenSpawns;
+    public float timeBetweenSpawns;
 }
