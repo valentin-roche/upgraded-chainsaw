@@ -11,15 +11,20 @@ public class ShootingAssController : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;       // Référence sur le transform du joueur pour tirer dans la bonne direction
 
-    public Colors color = Colors.White;    // La couleur de la balle
+    private Animator assAnimator;           // Référence sur l'animator du cul
+    private Animator eyeAnimator;           // Référence sur l'animator des yeux
+
+    public Colors color = Colors.White;     // La couleur de la balle
 
     public float startReloadingTime;        // Durée de rechargement
     private float reloadingTime;            // Durée restante de rechargement 
     
-
     // Start is called before the first frame update
     void Start()
     {
+        assAnimator = GetComponent<Animator>();
+        eyeAnimator = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
+
         // Initialisation du timer
         reloadingTime = startReloadingTime;
     }
@@ -40,9 +45,22 @@ public class ShootingAssController : MonoBehaviour
         // Si on tire et qu'on est pas en train de recharger, alors on tire vraiment
         if (Input.GetMouseButtonDown(0) && reloadingTime == startReloadingTime)
         {
-            GameObject projectile = Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
-            projectile.GetComponent<BulletController>().SetColor(color);
-            reloadingTime -= Time.deltaTime;
+            Shoot();
+            assAnimator.SetBool("shouldShoot", true);
+            eyeAnimator.SetBool("angryEye", true);
         }
+    }
+
+    public void SetShouldShootToFalse()
+    {
+        assAnimator.SetBool("shouldShoot", false);
+        eyeAnimator.SetBool("angryEye", false);
+    }
+
+    public void Shoot()
+    {
+        GameObject projectile = Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
+        projectile.GetComponent<BulletController>().SetColor(color);
+        reloadingTime -= Time.deltaTime;
     }
 }

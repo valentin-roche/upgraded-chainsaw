@@ -5,12 +5,27 @@ using UnityEngine;
 public class PlayerCollisionController : MonoBehaviour
 {
     public int health = 3;
+    private bool dead = false;
     private int currentHealth;
     public float invincibilityTime;
     private float invincibilityTimeLeft;
 
+    private Animator eyeAnimator;               // Référence sur l'animator des yeux
+    private Animator bodyAnimator;              // Référence sur l'animator du body
+
+    private GameObject ass;
+    private GameObject wings;
+    private PlayerMovementController playerMovementController;
+    private PlayerRotationController playerRotationController;
+
     void Start()
     {
+        ass = GameObject.FindGameObjectWithTag("Ass");
+        wings = GameObject.FindGameObjectWithTag("Wings");
+        playerMovementController = GetComponent<PlayerMovementController>();
+        playerRotationController = GetComponent<PlayerRotationController>();
+        eyeAnimator = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
+        bodyAnimator = GameObject.FindGameObjectWithTag("Body").GetComponent<Animator>();
         currentHealth = health;
         invincibilityTimeLeft = 0;
     }
@@ -21,20 +36,24 @@ public class PlayerCollisionController : MonoBehaviour
         {
             currentHealth -= 1;
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !dead)
             {
                 Die();
             }
 
             invincibilityTimeLeft = invincibilityTime;
-
-            print("pas invincible");
         }
     }
 
     private void Die()
     {
-        Destroy(gameObject);
+        dead = true;
+        eyeAnimator.SetBool("deadEye", true);
+        bodyAnimator.SetBool("isDead", true);
+        ass.SetActive(false);
+        wings.SetActive(false);
+        playerMovementController.enabled = false;
+        playerRotationController.enabled = false;
     }
 
     void Update()

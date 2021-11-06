@@ -14,8 +14,11 @@ public class SpawnerController : MonoBehaviour
     public int maxIteration = 50;                       // Le nombre d'itération max pour trouver un ennemi à faire spawn.
     private int currentIteration = 0;                   // Le nombre actuel d'itération
 
+    private Animator eyeAnimator;                       // Référence sur l'animator des yeux   
+
     void Start()
     {
+        eyeAnimator = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
         spawnPositions = GameObject.FindGameObjectsWithTag("SpawnPosition");
         if(spawnPositions.Length == 0)
         {
@@ -39,6 +42,7 @@ public class SpawnerController : MonoBehaviour
     {
         if (currentWaveIndex <= waves.Length - 1)
         {
+            eyeAnimator.SetBool("uwuEye", false);
             for (int indexEnemy = 0; indexEnemy < waves[currentWaveIndex].enemiesList.Length; indexEnemy++)
             {
                 waves[currentWaveIndex].enemiesList[indexEnemy].timeBetweenSpawns = waves[currentWaveIndex].enemiesList[indexEnemy].startTimeBetweenSpawns;
@@ -182,6 +186,7 @@ public class SpawnerController : MonoBehaviour
     // Fonction à appeler pour signaler la fin de la vague
     private void EndOfWave()
     {
+        eyeAnimator.SetBool("uwuEye", true);
         currentWaveIndex++;
         timeBetweenWaves -= Time.deltaTime;
     }

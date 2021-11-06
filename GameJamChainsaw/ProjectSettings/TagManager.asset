@@ -9,6 +9,10 @@ TagManager:
   - Wall
   - Door
   - SpawnPosition
+  - Body
+  - Eye
+  - Ass
+  - Wings
   layers:
   - Default
   - TransparentFX
