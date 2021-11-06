@@ -15,9 +15,14 @@ public class ProjectorController : MonoBehaviour
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         actualColor = color;
+        float randX = Random.Range(-1f, 1f); 
+        float randY = Random.Range(-1f, 1f);
+        Vector2 vectorDirection = new Vector2(randX, randY);
 
-        float randModification = Random.Range(-1, 1);
+        float randModification = Random.Range(1f, 2f);
         speed += randModification;
+
+        rb.velocity = vectorDirection * speed;
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         switch (color)
@@ -68,6 +73,26 @@ public class ProjectorController : MonoBehaviour
                     sprite.color = Color.magenta;
                     break;
             }
+        }
+
+        if(collision.CompareTag("Wall") || collision.CompareTag("Door"))
+        {
+            print("collision détectée");
+            float mX = 0;
+            float mY = 0;
+            if(collision.gameObject.name.StartsWith("Top") || collision.gameObject.name.StartsWith("Bottom"))
+            {
+                mX = 0;
+                mY = 1;
+            }
+            else
+            {
+                mX = 1;
+                mY = 0;
+            }
+            Vector2 normal = new Vector2(mX, mY);
+            var newDirection = Vector2.Reflect(rb.velocity, normal);
+            rb.velocity = newDirection;
         }
     }
 
