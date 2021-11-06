@@ -65,4 +65,9 @@ public class PlayerCollisionController : MonoBehaviour
     {
         return invincibilityTimeLeft;
     }
+
+    public void ChangeColor(Colors color)
+    {
+        GetComponentInChildren<ShootingAssController>().ChangeColor(color);
+    }
 }

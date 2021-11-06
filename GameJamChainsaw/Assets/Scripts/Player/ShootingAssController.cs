@@ -62,5 +62,10 @@ public class ShootingAssController : MonoBehaviour
         GameObject projectile = Instantiate(shot, firingPoint.transform.position, playerTransform.rotation);
         projectile.GetComponent<BulletController>().SetColor(color);
         reloadingTime -= Time.deltaTime;
+	}
+
+    public void ChangeColor(Colors colorProjector)
+    {
+        color = colorProjector;
     }
 }
