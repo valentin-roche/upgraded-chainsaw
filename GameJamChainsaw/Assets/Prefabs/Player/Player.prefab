@@ -194,6 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  dashSpeed: 6
+  dashTime: 0.5
+  dashReloadTime: 3
 --- !u!114 &4365567796009991432
 MonoBehaviour:
   m_ObjectHideFlags: 0
