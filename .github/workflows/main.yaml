@@ -1,8 +1,14 @@
 name: Main workflow
+
 on:
-  push:
+  release:
+    types:
+      - created
     branches:
       - main
+  schedule:
+    - cron:  '0 */3 * * *'
+  workflow_dispatch: {}
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -28,10 +34,14 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           projectPath: GameJamChainsaw/
-      - uses: valentin-roche/UploadToItch@0.20
+      - name: Set Version
+        run: |
+          echo "version=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      - name: Upload ${{ matrix.preset }} to itch.io project
+        uses: robpc/itchio-upload-action@v1
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}
-          name: Build-${{ matrix.targetPlatform }}
-          build-path: build/${{ matrix.targetPlatform }}
-          version-number: "0.2.0"
-          butler-api-key: ${{ secrets.BUTLER_API_KEY }}
+          path: build/${{ matrix.targetPlatform }}
+          project: kryspou/poole
+          channel: ${{ matrix.targetPlatform }}
+          version: ${{ env.version }}
+          api-key: ${{ secrets.BUTLER_API_KEY }}

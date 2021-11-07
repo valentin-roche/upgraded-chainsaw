@@ -523,7 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5673498880159881043}
   - component: {fileID: 569297055829318879}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,13 +537,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5897286523343379046}
-  m_LocalRotation: {x: 0.42261827, y: 0.9063079, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.42261827, w: 0.9063079}
   m_LocalPosition: {x: 0, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5032947257016405770}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 50}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
 --- !u!212 &569297055829318879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f89dd97b96be6994595d88f7cb56e11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -584,7 +584,7 @@ SpriteRenderer:
   m_SortingLayerID: -1665451249
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e1c7f423c0a66ff498575412842056bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d8029dab04c9f3438caff15fd494716, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -704,6 +704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7611851649150129356}
     m_Modifications:
+    - target: {fileID: 2436395563568856740, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3873114229971233736, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -752,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWingPivot
       objectReference: {fileID: 0}
+    - target: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b52c98785484be46ae677331f0bab75, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
 --- !u!4 &2330222287214533977 stripped
