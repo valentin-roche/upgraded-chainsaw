@@ -16,6 +16,7 @@ TagManager:
   - Projector
   - Attack
   - HitBoxEnemy
+  - ProjectorManager
   layers:
   - Default
   - TransparentFX

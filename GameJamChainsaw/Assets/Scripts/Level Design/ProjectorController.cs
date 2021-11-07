@@ -128,4 +128,11 @@ public class ProjectorController : MonoBehaviour
                 break;
         }
     }
+
+    public void ChangeProjectorColor(Colors newTrueColor)
+    {
+        color = newTrueColor;
+        ChangeSelfColor(color);
+        SetProjectorColor(actualColor);
+    }
 }
