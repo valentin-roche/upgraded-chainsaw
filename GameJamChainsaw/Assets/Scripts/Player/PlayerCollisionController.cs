@@ -18,6 +18,8 @@ public class PlayerCollisionController : MonoBehaviour
     private PlayerMovementController playerMovementController;
     private PlayerRotationController playerRotationController;
 
+    private List<ProjectorController> listProjector = new List<ProjectorController>();
+
     void Start()
     {
         ass = GameObject.FindGameObjectWithTag("Ass");
@@ -66,10 +68,42 @@ public class PlayerCollisionController : MonoBehaviour
         return invincibilityTimeLeft;
     }
 
-    public void ChangeColor(Colors color)
+    public void ChangeColor(SpriteColor color)
     {
         if(!dead)
             GetComponentInChildren<ShootingAssController>().ChangeColor(color);
+    }
+
+    public void RemoveProjector(ProjectorController projo)
+    {
+        listProjector.Remove(projo);
+        CalculateColor();
+    }
+
+    public void AddProjector(ProjectorController projo)
+    {
+        listProjector.Add(projo);
+        CalculateColor();
+    }
+
+    public void CalculateColor()
+    {
+        SpriteColor colorToChangeTo = new SpriteColor();
+        if(listProjector.Count == 0)
+        {
+            colorToChangeTo.color = Colors.White;
+            CodeRGB rgb;
+            rgb.r = 255;
+            rgb.g = 255;
+            rgb.b = 255;
+            colorToChangeTo.rgbCode = rgb;
+        }
+        else
+        {
+            colorToChangeTo = listProjector[0].GetActualColor();
+        }
+
+        ChangeColor(colorToChangeTo);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

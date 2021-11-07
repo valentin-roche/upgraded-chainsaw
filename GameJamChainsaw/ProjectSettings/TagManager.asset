@@ -16,6 +16,7 @@ TagManager:
   - Projector
   - Attack
   - HitBoxEnemy
+  - Ouin
   layers:
   - Default
   - TransparentFX

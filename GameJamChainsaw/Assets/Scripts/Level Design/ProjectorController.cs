@@ -5,22 +5,34 @@ using UnityEngine;
 public class ProjectorController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private int id;
 
-    public Colors color;
-    private Colors actualColor;
+    // color c'est la couleur c'est censé être et actualColor c'est la couleur actuel de mix
+    public SpriteColor color;
+    public SpriteColor actualColor;
     private Vector3 lastVelocity;
-    private int overlapping;
+    private int overlapping = 0;
 
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
+
+    [SerializeField]
+    private SpriteColor whiteColor;         
+    [SerializeField]
+    private SpriteColor yellowPinkColor;         
+    [SerializeField]
+    private SpriteColor yellowPurpleColor;         
+    [SerializeField]
+    private SpriteColor pinkPurpleColor;
+    [SerializeField]
+    private SpriteColor pinkPurpleYellowColor;
 
     void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         actualColor = color;
-        overlapping = 0;
 
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        SetProjectorColor(actualColor);
+        //sprite = GetComponent<SpriteRenderer>();
+        //SetProjectorColor(actualColor);
     }
 
     private void Update()
@@ -32,16 +44,14 @@ public class ProjectorController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerCollisionController>().ChangeColor(actualColor);
+            collision.GetComponent<PlayerCollisionController>().AddProjector(this);
         }
 
         if(collision.CompareTag("Projector"))
         {
-            ChangeSelfColor(GetColorMix(color, collision.GetComponent<ProjectorController>().color));
+            overlapping++;
+            ChangeSelfColor(GetColorMix(actualColor, collision.GetComponent<ProjectorController>()));
             SetProjectorColor(actualColor);
-            overlapping += 1;
-
-            //penser à vérifier overlapping pour checker a couleur à mettre après mix
         }
 
         if(collision.CompareTag("Wall") || collision.CompareTag("Door"))
@@ -72,60 +82,91 @@ public class ProjectorController : MonoBehaviour
     {
         if(collision.CompareTag("Projector"))
         {
-            overlapping -= 1;
+            overlapping--;
             if(overlapping <= 0)
             {
                 ChangeSelfColor(color);
-                SetProjectorColor(actualColor);
             }
-
-            //else refaire le mix de couleur
+            else if(overlapping == 1)
+            {
+                GetColorMixInverse(actualColor, collision.GetComponent<ProjectorController>().color);
+            }
+            SetProjectorColor(actualColor);
         }
 
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerCollisionController>().ChangeColor(Colors.White);
+            collision.GetComponent<PlayerCollisionController>().RemoveProjector(this);
         }
     }
 
-    private void ChangeSelfColor(Colors newColor)
+    private void ChangeSelfColor(SpriteColor newColor)
     {
         actualColor = newColor;
     }
 
-    private Colors GetColorMix(Colors color1, Colors color2)
+    private SpriteColor GetColorMix(SpriteColor color1, ProjectorController projectorColor)
     {
-        // A remplir pour mixer les couleurs des projecteurs
+        SpriteColor color2 = projectorColor.GetActualColor();
+        if ((color1.color == Colors.Pink || color2.color == Colors.Pink) && (color1.color == Colors.Purple || color2.color == Colors.Purple))
+            return pinkPurpleColor;
+        else if ((color1.color == Colors.Pink || color2.color == Colors.Pink) && (color1.color == Colors.Yellow || color2.color == Colors.Yellow))
+            return yellowPinkColor;
+        else if ((color1.color == Colors.Yellow || color2.color == Colors.Yellow) && (color1.color == Colors.Purple || color2.color == Colors.Purple))
+            return yellowPurpleColor;
+        else if (overlapping == 1 && projectorColor.GetOverlapping() == 1)
+            return projectorColor.GetActualColor();
+        else
+            return pinkPurpleYellowColor;
+    }
 
-        return Colors.White;
+    private SpriteColor GetColorMixInverse(SpriteColor color1, SpriteColor color2)
+    {
+        if (color1.color == Colors.PinkPurpleYellow && color2.color == Colors.Purple)
+            return yellowPinkColor;
+        else if (color1.color == Colors.PinkPurpleYellow && color2.color == Colors.Yellow)
+            return pinkPurpleColor;
+        else 
+            return yellowPurpleColor;
     }
 
 
-    void SetProjectorColor(Colors colorProj)
+    void SetProjectorColor(SpriteColor colorProj)
     {
-        switch (colorProj)
+        if (sprite != null)
         {
-            case Colors.White:
-                sprite.material.SetColor("Color", Color.white);
-                sprite.material.SetColor("_EmissionColor", Color.white);
-
-                break;
-            case Colors.Red:
-                sprite.material.SetColor("_Color", Color.red);
-                sprite.material.SetColor("_EmissionColor", Color.red * 1.22f);
-                break;
-            case Colors.Green:
-                sprite.material.SetColor("_Color", Color.green);
-                sprite.material.SetColor("_EmissionColor", Color.green * 1.22f);
-                break;
-            case Colors.Blue:
-                sprite.material.SetColor("_Color", Color.blue);
-                sprite.material.SetColor("_EmissionColor", Color.blue * 1.22f);
-                break;
-            case Colors.Pink:
-                sprite.material.SetColor("_Color", Color.magenta);
-                sprite.material.SetColor("_EmissionColor", Color.magenta * 1.22f);
-                break;
+            sprite = GetComponent<SpriteRenderer>();
         }
+
+        sprite.material.SetColor("_Color", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f, 0.1f));
+        sprite.material.SetColor("_EmissionColor", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f, 0.3f) * 8f);
+    }
+
+    public void ChangeProjectorColor(SpriteColor newTrueColor)
+    {
+        color = newTrueColor;
+        ChangeSelfColor(color);
+        sprite = GetComponent<SpriteRenderer>();
+        SetProjectorColor(actualColor);
+    }
+
+    public void SetId(int projectorId)
+    {
+        id = projectorId;
+    }
+
+    public int GetIt()
+    {
+        return id;
+    }
+
+    public SpriteColor GetActualColor()
+    {
+        return actualColor;
+    }
+
+    public int GetOverlapping()
+    {
+        return overlapping;
     }
 }
