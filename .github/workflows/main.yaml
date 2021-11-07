@@ -37,6 +37,6 @@ jobs:
         with:
           path: build/${{ matrix.targetPlatform }}
           project: kryspou/poole
-          channel: matrix.targetPlatform
+          channel: ${{ matrix.targetPlatform }}
           version: ${{ env.version }}
           api-key: ${{ secrets.BUTLER_API_KEY }}
