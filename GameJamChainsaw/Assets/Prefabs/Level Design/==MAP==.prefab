@@ -59,8 +59,8 @@ MonoBehaviour:
       b: 117
   - color: 3
     rgbCode:
-      r: 242
-      g: 34
+      r: 0
+      g: 255
       b: 255
 --- !u!1 &2335901127841927710
 GameObject:

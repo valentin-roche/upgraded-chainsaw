@@ -72,24 +72,24 @@ MonoBehaviour:
       r: 255
       g: 126
       b: 71
-  yellowPurpleColor:
+  yellowBlueColor:
     color: 5
     rgbCode:
-      r: 198
-      g: 121
+      r: 128
+      g: 233
       b: 140
-  pinkPurpleColor:
+  pinkBlueColor:
     color: 6
     rgbCode:
-      r: 198
-      g: 36
+      r: 128
+      g: 148
       b: 186
-  pinkPurpleYellowColor:
+  pinkBlueYellowColor:
     color: 7
     rgbCode:
-      r: 217
-      g: 94
-      b: 132
+      r: 128
+      g: 191
+      b: 163
 --- !u!114 &6933931845497003941
 MonoBehaviour:
   m_ObjectHideFlags: 0
