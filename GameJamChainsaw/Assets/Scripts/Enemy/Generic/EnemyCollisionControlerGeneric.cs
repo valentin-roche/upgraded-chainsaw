@@ -9,11 +9,22 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     private SpawnerController spawnerController;                            // Référence sur le script du spawner.
     private PlayerCollisionController playerCollisionController = null;
     private SpriteRenderer sprite;                                          // Référence sur le sprite
+    private EnemyMovementControllerGeneric enemyMovementController = null;  // Référence sur le script de mouvement
+
+    [SerializeField]
+    private Animator armAnimator;                                           // Référence sur l'animator des bras
+    [SerializeField]
+    private Animator hitAnimator;                                           // Référence sur l'animator du hit
+
+    public float startTimeBetweenAttack = 1f;
+    private float timeBetweenAttack;
 
     void Start()
     {
+        timeBetweenAttack = startTimeBetweenAttack;
         currentHealth = enemyScriptable.health;
         spawnerController = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>();
+        enemyMovementController = GetComponent<EnemyMovementControllerGeneric>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         switch(enemyScriptable.color)
         {
@@ -37,9 +48,12 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
 
     public void GetHit(int damage, Colors projectileColor)
     {
+
         if (enemyScriptable.color == projectileColor || enemyScriptable.color == Colors.White)
         {
             currentHealth -= damage;
+
+            hitAnimator.SetBool("shouldGetHit", true);
 
             if (currentHealth <= 0)
             {
@@ -59,6 +73,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerCollisionController = collision.GetComponent<PlayerCollisionController>();
+            enemyMovementController.SetHasPlayerInRange(true);
         }
     }
     
@@ -67,6 +82,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerCollisionController = null;
+            enemyMovementController.SetHasPlayerInRange(false);
         }
     }
 
@@ -74,9 +90,19 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     {
         if(playerCollisionController != null)
         {
-            if(playerCollisionController.GetInvincibilityTimeLeft() <= 0)
+            if(timeBetweenAttack == startTimeBetweenAttack)
             {
-                playerCollisionController.GetHit();
+                armAnimator.SetBool("shouldAttack", true);
+                timeBetweenAttack -= Time.deltaTime;
+            }
+        }
+
+        if(timeBetweenAttack < startTimeBetweenAttack)
+        {
+            timeBetweenAttack -= Time.deltaTime;
+            if(timeBetweenAttack <= 0)
+            {
+                timeBetweenAttack = startTimeBetweenAttack;
             }
         }
     }

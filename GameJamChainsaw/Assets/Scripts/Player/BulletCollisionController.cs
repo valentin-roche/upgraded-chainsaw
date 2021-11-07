@@ -40,11 +40,11 @@ public class BulletCollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("HitBoxEnemy"))
         {
             if (!dead)
             {
-                collision.GetComponent<EnemyCollisionControlerGeneric>().GetHit(bulletController.damage, color);
+                collision.GetComponent<EnemyCallGetHit>().GetHit(bulletController.damage, color);
                 Hit();
             }
         }
