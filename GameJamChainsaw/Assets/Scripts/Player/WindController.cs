@@ -39,8 +39,14 @@ public class WindController : MonoBehaviour
         }
         if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
-            rb.velocity = Vector2.zero;
             lifetime = timeWhenHittingWall;
+
+            Vector3 direction = collision.transform.position - transform.position;
+            float dot = Vector2.Dot(rb.velocity.normalized, (Vector2)direction.normalized);
+            print(dot);
+
+            // If on va dans la direction du mur
+            rb.velocity = Vector2.zero;
         }
     }
 }

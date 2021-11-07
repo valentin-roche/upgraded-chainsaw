@@ -8,6 +8,8 @@ public class WingsController : MonoBehaviour
     private GameObject wind;                 // Reference sur le projectile qu'on va envoyer
     [SerializeField]
     private Transform playerTransform;       // Référence sur le transform du joueur pour tirer dans la bonne direction
+    [SerializeField]
+    private Transform startingPoint;        // Position de départ du vent
 
     public float startReloadingTimeWings;        // Durée de rechargement du coup d'ailes
     private float reloadingTimeWings;            // Durée restante de rechargement du coup d'ailes
@@ -33,7 +35,7 @@ public class WingsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && reloadingTimeWings == startReloadingTimeWings)
         {
-            GameObject projectile = Instantiate(wind, playerTransform.position, playerTransform.rotation);
+            GameObject projectile = Instantiate(wind, startingPoint.position, playerTransform.rotation);
             reloadingTimeWings -= Time.deltaTime;
         }
     }

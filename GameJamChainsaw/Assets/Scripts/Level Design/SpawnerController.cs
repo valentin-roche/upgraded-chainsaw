@@ -110,8 +110,8 @@ public class SpawnerController : MonoBehaviour
                 }
                 currentIteration = 0;
             }
-            else
-                Debug.Log("Il n'y a plus de vague");
+            //else
+                //Debug.Log("Il n'y a plus de vague");
         }
         else
         {
