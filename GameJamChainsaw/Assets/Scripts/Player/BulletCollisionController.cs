@@ -74,6 +74,7 @@ public class BulletCollisionController : MonoBehaviour
 
     public void Die()
     {
+        bulletController.Die();
         Destroy(gameObject);
     }
 

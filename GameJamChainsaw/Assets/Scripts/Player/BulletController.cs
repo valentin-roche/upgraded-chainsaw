@@ -21,13 +21,8 @@ public class BulletController : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    /*private void Update()
+    public void Die()
     {
-        lifetime -= Time.deltaTime;
-        if (lifetime <= 0f)
-        {
-            Die();    
-        }
-    }*/
-
+        Destroy(gameObject);
+    }
 }
