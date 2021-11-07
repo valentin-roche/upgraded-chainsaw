@@ -28,8 +28,3 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           projectPath: GameJamChainsaw/
-      - uses: ./.github/upload
-        with:
-          name: Build-${{ matrix.targetPlatform }}
-          build-path: build/${{ matrix.targetPlatform }}
-          version-number: '0.3.0'
