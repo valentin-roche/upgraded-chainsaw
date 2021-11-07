@@ -5,9 +5,10 @@ using UnityEngine;
 public class ProjectorController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed;
+
     public Colors color;
     private Colors actualColor;
+    Vector3 lastVelocity;
 
     private SpriteRenderer sprite;
 
@@ -15,14 +16,6 @@ public class ProjectorController : MonoBehaviour
     {
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         actualColor = color;
-        float randX = Random.Range(-1f, 1f); 
-        float randY = Random.Range(-1f, 1f);
-        Vector2 vectorDirection = new Vector2(randX, randY);
-
-        float randModification = Random.Range(1f, 2f);
-        speed += randModification;
-
-        rb.velocity = vectorDirection * speed;
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         switch (color)
@@ -49,6 +42,11 @@ public class ProjectorController : MonoBehaviour
                 sprite.material.SetColor("_EmissionColor", Color.magenta * 1.22f);
                 break;
         }
+    }
+
+    private void Update()
+    {
+        lastVelocity = rb.velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,6 +81,9 @@ public class ProjectorController : MonoBehaviour
 
         if(collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
+
+            var speed = lastVelocity.magnitude;
+
             float mX = 0;
             float mY = 0;
             if(collision.gameObject.name.StartsWith("Top") || collision.gameObject.name.StartsWith("Bottom"))
@@ -96,8 +97,9 @@ public class ProjectorController : MonoBehaviour
                 mY = 0;
             }
             Vector2 normal = new Vector2(mX, mY);
-            var newDirection = Vector2.Reflect(rb.velocity, normal);
-            rb.velocity = newDirection;
+            var newDirection = Vector2.Reflect(lastVelocity.normalized, normal);
+
+            rb.velocity = newDirection * Mathf.Max(speed, 0f);
         }
     }
 
