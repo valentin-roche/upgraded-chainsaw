@@ -8,9 +8,13 @@ public class BulletCollisionController : MonoBehaviour
     private Colors color;
 
     private SpriteRenderer sprite;                                          // Référence sur le sprite
+    private Animator animator;                                              // Référence sur l'animator
+
+    private bool dead = false;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         bulletController = GetComponentInParent<BulletController>();
 
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -38,15 +42,15 @@ public class BulletCollisionController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            if (!bulletController.GetIsDead())
+            if (!dead)
             {
                 collision.GetComponent<EnemyCollisionControlerGeneric>().GetHit(bulletController.damage, color);
-                bulletController.Die();
+                Hit();
             }
         }
         if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
-            bulletController.Die();
+            Hit();
         }
     }
 
@@ -58,5 +62,23 @@ public class BulletCollisionController : MonoBehaviour
     public Colors GetColor()
     {
         return color;
+    }
+
+    public void Hit()
+    {
+        dead = true;
+        animator.SetBool("gotHit", true);
+        bulletController.SetSpeedToZero();
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public bool GetIsDead()
+    {
+        return dead;
     }
 }
