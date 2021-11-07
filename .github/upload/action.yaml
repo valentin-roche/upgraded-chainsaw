@@ -16,4 +16,4 @@ jobs:
   name: Upload build 
   runs-on: ubuntu-latest
   steps:
-    - run: echo "Upload artifact ${{ inputs.name }}:${{ inputs.version-number }} from ${{ inputs.build-path }}"
+    - run: echo "Upload artifact ${{ inputs.name }} version ${{ inputs.version-number }} from ${{ inputs.build-path }}"
