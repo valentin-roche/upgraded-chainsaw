@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 dashVelocity;
     private float dashTimeLeft;
 
+    public TextMeshProUGUI cooldownTextMesh;
 
     void Start()
     {
@@ -91,6 +93,7 @@ public class PlayerMovementController : MonoBehaviour
             dashVelocity = moveVelocity * dashSpeed;
             dashTimeLeft -= Time.deltaTime;
         }
+        HandleTextChange();
     }
 
     private void FixedUpdate()
@@ -102,6 +105,15 @@ public class PlayerMovementController : MonoBehaviour
         else
         {
             rb.MovePosition(rb.position + dashVelocity * Time.fixedDeltaTime);
+        }
+    }
+    public void HandleTextChange()
+    {
+        cooldownTextMesh.gameObject.SetActive(true);
+        cooldownTextMesh.text = reloadingTime.ToString().Substring(0, 1);
+        if (reloadingTime == dashReloadTime)
+        {
+            cooldownTextMesh.gameObject.SetActive(false);
         }
     }
 }

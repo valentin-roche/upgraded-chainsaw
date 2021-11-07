@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WingsController : MonoBehaviour
@@ -13,6 +14,8 @@ public class WingsController : MonoBehaviour
 
     public float startReloadingTimeWings;        // Durée de rechargement du coup d'ailes
     private float reloadingTimeWings;            // Durée restante de rechargement du coup d'ailes
+
+    public TextMeshProUGUI cooldownTextMesh;
 
     private Animator[] wingsAnimator;            // Références sur les animators des ailes
 
@@ -38,6 +41,7 @@ public class WingsController : MonoBehaviour
             GameObject projectile = Instantiate(wind, startingPoint.position, playerTransform.rotation);
             reloadingTimeWings -= Time.deltaTime;
         }
+        HandleTextChange();
     }
 
     public void ToggleMoveAnimation(bool toggle)
@@ -45,6 +49,15 @@ public class WingsController : MonoBehaviour
         foreach (Animator animator in wingsAnimator)
         {
             animator.SetBool("isMoving", toggle);
+        }
+    }
+    public void HandleTextChange()
+    {
+        cooldownTextMesh.gameObject.SetActive(true);
+        cooldownTextMesh.text = reloadingTimeWings.ToString().Substring(0,1);
+        if (reloadingTimeWings == startReloadingTimeWings)
+        {
+            cooldownTextMesh.gameObject.SetActive(false);
         }
     }
 }
