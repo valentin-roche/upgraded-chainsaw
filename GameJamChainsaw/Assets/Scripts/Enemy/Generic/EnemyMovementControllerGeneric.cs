@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyMovementControllerGeneric : MonoBehaviour
 {
-    private Transform playerTransform;              //transform du joueur
-    private Rigidbody2D rb;                         //rigidbody de l'ennemy (gameObject actuel)
-    private Vector2 movement;               //pour faire bouger l'ennemi
+    private Transform playerTransform;              
+    private Rigidbody2D rb;                         
+    private Vector2 movement;
+    private bool hasPlayerInRange = false;
+
+    [SerializeField]
+    private Animator feetAnimator = null;                  // Référence sur l'animateur des pieds slurps
 
     public Enemy enemyScriptable;
 
@@ -31,7 +35,19 @@ public class EnemyMovementControllerGeneric : MonoBehaviour
 
             if (windDurationLeft <= 0)
             {
-                movement = direction;
+                if (!hasPlayerInRange)
+                {
+                    movement = direction;
+                }
+                else
+                {
+                    movement = Vector2.zero;
+                }
+
+                if (feetAnimator != null)
+                    feetAnimator.SetFloat("magnitude", movement.magnitude);
+                else
+                    print("Il faut set l'animator des pieds dans EnemyMovementController");
             }
             else
             {
@@ -56,5 +72,10 @@ public class EnemyMovementControllerGeneric : MonoBehaviour
     {
         windDurationLeft += windEffectTime;
         pushFactor = pushingFactor;
+    }
+
+    public void SetHasPlayerInRange(bool inRange)
+    {
+        hasPlayerInRange = inRange;
     }
 }

@@ -68,6 +68,15 @@ public class PlayerCollisionController : MonoBehaviour
 
     public void ChangeColor(Colors color)
     {
-        GetComponentInChildren<ShootingAssController>().ChangeColor(color);
+        if(!dead)
+            GetComponentInChildren<ShootingAssController>().ChangeColor(color);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            GetHit();
+        }
     }
 }
