@@ -296,10 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2533df17657bf3a46985b39f3be1f312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 8
   lifetime: 1
-  windEffectTime: 0.2
-  pushFactor: 15
+  windEffectTime: 0.5
+  pushFactor: 2
   timeWhenHittingWall: 0.5
   colliderToIgnore: {fileID: 2284046334504448094}
 --- !u!50 &-4066451743602472341
