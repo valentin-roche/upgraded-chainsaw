@@ -3,10 +3,33 @@ on:
   push:
     branches:
       - main
-jobs:
-  build-supported-versions:
-    runs-on: ubuntu-latest
 
+jobs:
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          - WebGL # WebGL.
     steps:
-      - name: Build for supported platforms
-        uses: ./.github/actions/build
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: false
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+          projectPath: GameJamChainsaw/
+      - uses: ./.github/upload
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          build-path: build/${{ matrix.targetPlatform }}
+          version-number: '0.3.0'
