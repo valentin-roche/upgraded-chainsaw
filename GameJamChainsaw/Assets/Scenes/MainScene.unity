@@ -280,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[2].rgbCode.g
-      value: 34
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[2].rgbCode.r
-      value: 242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3176934128509052935, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: m_Enabled
