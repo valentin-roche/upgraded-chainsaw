@@ -1,9 +1,13 @@
 name: Main workflow
+on:
+  push:
+    branches:
+      - main
 inputs:
   version-number:
     description: 'SemVer version number'
     required: false
-    default: '0.0.0'
+    default: '0.3.0'
 
 jobs:
   buildForAllSupportedPlatforms:
