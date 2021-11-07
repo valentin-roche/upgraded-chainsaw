@@ -4,8 +4,9 @@ on:
     branches:
       - main
 jobs:
-  print-greeting:
+  build-supported-versions:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print greeting
-        run: echo Hello
+      - name: Build for supported platforms
+        uses: ./.github/actions/build
