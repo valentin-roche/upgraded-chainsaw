@@ -6,15 +6,26 @@ public class ProjectorController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    public Colors color;
-    private Colors actualColor;
+    public SpriteColor color;
+    private SpriteColor actualColor;
     private Vector3 lastVelocity;
     private int overlapping;
 
     private SpriteRenderer sprite;
 
+    private SpriteColor whiteColor;         // A SUPPRIMER C UN PLACEHOLDER POUR REMPLACER LA LOGIQUE ACTUELLE
+
     void Start()
     {
+        // CODE PLACEHOLDER
+        CodeRGB rgb;
+        rgb.r = 1;
+        rgb.g = 1;
+        rgb.b = 1;
+        whiteColor.rgbCode = rgb;
+        whiteColor.color = Colors.White;
+        // code placeholder
+
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         actualColor = color;
         overlapping = 0;
@@ -84,48 +95,26 @@ public class ProjectorController : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerCollisionController>().ChangeColor(Colors.White);
+            collision.GetComponent<PlayerCollisionController>().ChangeColor(whiteColor);
         }
     }
 
-    private void ChangeSelfColor(Colors newColor)
+    private void ChangeSelfColor(SpriteColor newColor)
     {
         actualColor = newColor;
     }
 
-    private Colors GetColorMix(Colors color1, Colors color2)
+    private SpriteColor GetColorMix(SpriteColor color1, SpriteColor color2)
     {
         // A remplir pour mixer les couleurs des projecteurs
 
-        return Colors.White;
+        return whiteColor;
     }
 
 
-    void SetProjectorColor(Colors colorProj)
+    void SetProjectorColor(SpriteColor colorProj)
     {
-        switch (colorProj)
-        {
-            case Colors.White:
-                sprite.material.SetColor("Color", Color.white);
-                sprite.material.SetColor("_EmissionColor", Color.white);
-
-                break;
-            case Colors.Red:
-                sprite.material.SetColor("_Color", Color.red);
-                sprite.material.SetColor("_EmissionColor", Color.red * 1.22f);
-                break;
-            case Colors.Green:
-                sprite.material.SetColor("_Color", Color.green);
-                sprite.material.SetColor("_EmissionColor", Color.green * 1.22f);
-                break;
-            case Colors.Blue:
-                sprite.material.SetColor("_Color", Color.blue);
-                sprite.material.SetColor("_EmissionColor", Color.blue * 1.22f);
-                break;
-            case Colors.Pink:
-                sprite.material.SetColor("_Color", Color.magenta);
-                sprite.material.SetColor("_EmissionColor", Color.magenta * 1.22f);
-                break;
-        }
+        sprite.material.SetColor("_Color", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f));
+        sprite.material.SetColor("_EmissionColor", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f) * 1.22f);
     }
 }

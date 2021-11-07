@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletCollisionController : MonoBehaviour
 {
     private BulletController bulletController;              // Référence sur le bulletController
-    private Colors color;
+    private SpriteColor color;
 
     private SpriteRenderer sprite;                                          // Référence sur le sprite
     private Animator animator;                                              // Référence sur l'animator
@@ -18,24 +18,7 @@ public class BulletCollisionController : MonoBehaviour
         bulletController = GetComponentInParent<BulletController>();
 
         sprite = GetComponentInChildren<SpriteRenderer>();
-        switch (color)
-        {
-            case Colors.White:
-                sprite.color = Color.white;
-                break;
-            case Colors.Red:
-                sprite.color = Color.red;
-                break;
-            case Colors.Green:
-                sprite.color = Color.green;
-                break;
-            case Colors.Blue:
-                sprite.color = Color.blue;
-                break;
-            case Colors.Pink:
-                sprite.color = Color.magenta;
-                break;
-        }
+        sprite.color = new Color(color.rgbCode.r / 255f, color.rgbCode.g / 255f, color.rgbCode.b / 255f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +27,7 @@ public class BulletCollisionController : MonoBehaviour
         {
             if (!dead)
             {
-                collision.GetComponent<EnemyCallGetHit>().GetHit(bulletController.damage, color);
+                collision.GetComponent<EnemyCallGetHit>().GetHit(bulletController.damage, color.color);
                 Hit();
             }
         }
@@ -54,12 +37,12 @@ public class BulletCollisionController : MonoBehaviour
         }
     }
 
-    public void SetColor(Colors color)
+    public void SetColor(SpriteColor color)
     {
         this.color = color;
     }
 
-    public Colors GetColor()
+    public SpriteColor GetColor()
     {
         return color;
     }

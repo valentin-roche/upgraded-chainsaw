@@ -15,4 +15,9 @@ MonoBehaviour:
   id: 1
   health: 5
   speed: 3
-  color: 0
+  color:
+    color: 0
+    rgbCode:
+      r: 255
+      g: 255
+      b: 255

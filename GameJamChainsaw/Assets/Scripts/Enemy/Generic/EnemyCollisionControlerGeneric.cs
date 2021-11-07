@@ -9,7 +9,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     private int currentHealth;
     private SpawnerController spawnerController;                            // Référence sur le script du spawner.
     private PlayerCollisionController playerCollisionController = null;
-    private SpriteRenderer sprite;                                          // Référence sur le sprite
+    private SpriteRenderer[] sprites;                                          // Référence sur les sprites
     private SteeringBasics enemyMovementController = null;                  // Référence sur le script de mouvement
 
     [SerializeField]
@@ -26,31 +26,21 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         currentHealth = enemyScriptable.health;
         spawnerController = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>();
         enemyMovementController = GetComponent<SteeringBasics>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        switch(enemyScriptable.color)
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach(SpriteRenderer sprite in sprites)
         {
-            case Colors.White:
-                sprite.color = Color.white;
-                break;
-            case Colors.Red:
-                sprite.color = Color.red;
-                break;
-            case Colors.Green:
-                sprite.color = Color.green;
-                break;
-            case Colors.Blue:
-                sprite.color = Color.blue;
-                break;
-            case Colors.Pink:
-                sprite.color = Color.magenta;
-                break;
+            if(!sprite.CompareTag("Ouin"))
+            {
+                sprite.color = new Color(enemyScriptable.color.rgbCode.r/255f, enemyScriptable.color.rgbCode.g/255f, enemyScriptable.color.rgbCode.b/255f);
+            }
         }
     }
 
     public void GetHit(int damage, Colors projectileColor)
     {
 
-        if (enemyScriptable.color == projectileColor || enemyScriptable.color == Colors.White)
+        if (enemyScriptable.color.color == projectileColor || enemyScriptable.color.color == Colors.White)
         {
             currentHealth -= damage;
 

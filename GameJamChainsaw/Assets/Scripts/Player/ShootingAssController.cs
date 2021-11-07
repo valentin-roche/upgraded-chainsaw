@@ -14,7 +14,7 @@ public class ShootingAssController : MonoBehaviour
     private Animator assAnimator;           // Référence sur l'animator du cul
     private Animator eyeAnimator;           // Référence sur l'animator des yeux
 
-    public Colors color = Colors.White;     // La couleur de la balle
+    public SpriteColor color;     // La couleur de la balle
 
     public float startReloadingTime;        // Durée de rechargement
     private float reloadingTime;            // Durée restante de rechargement 
@@ -64,7 +64,7 @@ public class ShootingAssController : MonoBehaviour
         reloadingTime -= Time.deltaTime;
 	}
 
-    public void ChangeColor(Colors colorProjector)
+    public void ChangeColor(SpriteColor colorProjector)
     {
         color = colorProjector;
     }
