@@ -260,19 +260,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[0].rgbCode.b
-      value: 25
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[0].rgbCode.g
-      value: 211
+      value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
+      propertyPath: colors.Array.data[0].rgbCode.r
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[1].rgbCode.b
-      value: 117
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[1].rgbCode.g
-      value: 41
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[2].rgbCode.b
@@ -280,11 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[2].rgbCode.g
-      value: 255
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 3114252406403479537, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: colors.Array.data[2].rgbCode.r
-      value: 0
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 3176934128509052935, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: m_Enabled
