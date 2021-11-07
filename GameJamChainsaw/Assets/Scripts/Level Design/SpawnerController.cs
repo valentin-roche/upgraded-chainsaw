@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
+    private ProjectorManager projectorManager;
+
     public Wave[] waves;                                // Le tableau contenant toutes les vagues du niveau.
     private int currentWaveIndex = 0;                   // L'index de la vague actuel dans le tableau.
     public double startTimeBetweenWaves = 5;            // Le temps entre deux vagues
@@ -18,6 +20,7 @@ public class SpawnerController : MonoBehaviour
 
     void Start()
     {
+        projectorManager = GameObject.FindGameObjectWithTag("ProjectorManager").GetComponent<ProjectorManager>();
         eyeAnimator = GameObject.FindGameObjectWithTag("Eye").GetComponent<Animator>();
         spawnPositions = GameObject.FindGameObjectsWithTag("SpawnPosition");
         if(spawnPositions.Length == 0)
@@ -189,5 +192,9 @@ public class SpawnerController : MonoBehaviour
         eyeAnimator.SetBool("uwuEye", true);
         currentWaveIndex++;
         timeBetweenWaves -= Time.deltaTime;
+        if(currentWaveIndex==1)
+        {
+            projectorManager.SpawnProjector(Colors.Blue);
+        }
     }
 }

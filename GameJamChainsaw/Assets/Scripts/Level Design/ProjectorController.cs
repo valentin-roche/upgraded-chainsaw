@@ -117,4 +117,11 @@ public class ProjectorController : MonoBehaviour
         sprite.material.SetColor("_Color", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f));
         sprite.material.SetColor("_EmissionColor", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f) * 1.22f);
     }
+
+    public void ChangeProjectorColor(Colors newTrueColor)
+    {
+        color = newTrueColor;
+        ChangeSelfColor(color);
+        SetProjectorColor(actualColor);
+    }
 }
