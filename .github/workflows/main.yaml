@@ -28,3 +28,9 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           projectPath: GameJamChainsaw/
+      - uses: valentin-roche/UploadToItch@0.20
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          build-path: build/${{ matrix.targetPlatform }}
+          version-number: "0.2.0"
+          butler-api-key: ${{ secrets.BUTLER_API_KEY }}
