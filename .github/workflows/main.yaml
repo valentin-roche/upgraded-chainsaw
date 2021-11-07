@@ -3,11 +3,6 @@ on:
   push:
     branches:
       - main
-inputs:
-  version-number:
-    description: 'SemVer version number'
-    required: false
-    default: '0.3.0'
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -32,8 +27,9 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          projectPath: GameJamChainsaw/
       - uses: ./.github/upload
         with:
           name: Build-${{ matrix.targetPlatform }}
           build-path: build/${{ matrix.targetPlatform }}
-          version-number: ${{ version-number }}
+          version-number: '0.3.0'
