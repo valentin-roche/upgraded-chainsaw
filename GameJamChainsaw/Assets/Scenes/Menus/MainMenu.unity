@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeIn:
-    fadeDuration: 1
+    fadeDuration: 1000
     fadeCurve:
       serializedVersion: 2
       m_Curve:
@@ -1629,7 +1629,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   fadeOut:
-    fadeDuration: 1
+    fadeDuration: 1000
     fadeCurve:
       serializedVersion: 2
       m_Curve:
@@ -1654,6 +1654,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  sceneMusicName: menu
 --- !u!4 &1168803755
 Transform:
   m_ObjectHideFlags: 0
