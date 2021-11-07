@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityMovementAI;
 
 public class EnemyCollisionControlerGeneric : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     private SpawnerController spawnerController;                            // Référence sur le script du spawner.
     private PlayerCollisionController playerCollisionController = null;
     private SpriteRenderer sprite;                                          // Référence sur le sprite
-    private EnemyMovementControllerGeneric enemyMovementController = null;  // Référence sur le script de mouvement
+    private SteeringBasics enemyMovementController = null;                  // Référence sur le script de mouvement
 
     [SerializeField]
     private Animator armAnimator;                                           // Référence sur l'animator des bras
@@ -24,7 +25,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         timeBetweenAttack = startTimeBetweenAttack;
         currentHealth = enemyScriptable.health;
         spawnerController = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>();
-        enemyMovementController = GetComponent<EnemyMovementControllerGeneric>();
+        enemyMovementController = GetComponent<SteeringBasics>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         switch(enemyScriptable.color)
         {
@@ -109,6 +110,6 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
 
     public void GetPushed(float windEffectTime, float pushFactor)
     {
-        GetComponent<EnemyMovementControllerGeneric>().ApplyPushEffect(windEffectTime, pushFactor);
+        GetComponent<SteeringBasics>().ApplyPushEffect(windEffectTime, pushFactor);
     }
 }
