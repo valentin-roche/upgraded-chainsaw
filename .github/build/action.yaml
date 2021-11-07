@@ -1,5 +1,9 @@
 name: Build WebGL version of the game
-
+inputs:
+  versionNumber:
+    description: 'SemVer version number'
+    required: false
+    default: '0.0.0'
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
