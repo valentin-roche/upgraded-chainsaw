@@ -36,7 +36,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build/${{ matrix.targetPlatform }}
-          project: kryspou.itch.io/poole
+          project: kryspou/poole
           channel: matrix.targetPlatform
           version: ${{ env.version }}
           api-key: ${{ secrets.BUTLER_API_KEY }}
