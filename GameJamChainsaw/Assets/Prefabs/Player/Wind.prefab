@@ -299,6 +299,7 @@ MonoBehaviour:
   lifetime: 1
   windEffectTime: 0.2
   pushFactor: 15
+  timeWhenHittingWall: 0.5
 --- !u!50 &-4066451743602472341
 Rigidbody2D:
   serializedVersion: 4

@@ -37,51 +37,58 @@ public class PlayerMovementController : MonoBehaviour
         bodyAnimator = GameObject.FindGameObjectWithTag("Body").GetComponent<Animator>();
         wingsController = GetComponentInChildren<WingsController>();
         rb = GetComponent<Rigidbody2D>();
+        reloadingTime = dashReloadTime;
+        dashTimeLeft = dashTime;
     }
 
     void Update()
     {
-        if(dashTimeLeft <= 0)
+        dashing = false; 
+
+        // Récupération des inputs et calcul du déplacement approprié
+        mx = Input.GetAxisRaw("Horizontal");
+        my = Input.GetAxisRaw("Vertical");
+
+        if(mx == 0 && my == 0)
         {
-            dashing = false; 
+            bodyAnimator.SetBool("isMoving", false);
+            wingsController.ToggleMoveAnimation(false);
+        }
+        else
+        {
+            bodyAnimator.SetBool("isMoving", true);
+            wingsController.ToggleMoveAnimation(true);
+        }
 
-            // Récupération des inputs et calcul du déplacement approprié
-            mx = Input.GetAxisRaw("Horizontal");
-            my = Input.GetAxisRaw("Vertical");
+        moveInput = new Vector2(mx, my);
+        moveVelocity = moveInput.normalized * speed;
 
-            if(mx == 0 && my == 0)
+        if (dashTimeLeft < dashTime)
+        {
+            dashing = true;
+            dashTimeLeft -= Time.deltaTime;
+            if (dashTimeLeft <= 0)
             {
-                bodyAnimator.SetBool("isMoving", false);
-                wingsController.ToggleMoveAnimation(false);
-            }
-            else
-            {
-                bodyAnimator.SetBool("isMoving", true);
-                wingsController.ToggleMoveAnimation(true);
-            }
-
-            moveInput = new Vector2(mx, my);
-            moveVelocity = moveInput.normalized * speed;
-
-            if (reloadingTime < dashReloadTime)
-            {
-                reloadingTime -= Time.deltaTime;
-                if (reloadingTime <= 0)
-                {
-                    reloadingTime = dashReloadTime;
-                }
-            }
-
-            if (Input.GetMouseButtonDown(2) && reloadingTime == dashReloadTime)
-            {
-                reloadingTime -= Time.deltaTime;
-                dashing = true;
-                dashVelocity = moveVelocity * dashSpeed;
                 dashTimeLeft = dashTime;
             }
         }
         else
+            dashing = false;
+
+        if (reloadingTime < dashReloadTime)
         {
+            reloadingTime -= Time.deltaTime;
+            if (reloadingTime <= 0)
+            {
+                reloadingTime = dashReloadTime;
+            }
+        }
+
+        if (Input.GetMouseButtonDown(2) && reloadingTime == dashReloadTime)
+        {
+            reloadingTime -= Time.deltaTime;
+            dashing = true;
+            dashVelocity = moveVelocity * dashSpeed;
             dashTimeLeft -= Time.deltaTime;
         }
     }

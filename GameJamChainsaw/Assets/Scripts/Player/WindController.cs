@@ -9,6 +9,7 @@ public class WindController : MonoBehaviour
     public float lifetime = 3f;                                             // La duree de vie
     public float windEffectTime;
     public float pushFactor;
+    public float timeWhenHittingWall;                                       // Le temps avant que le projectile se détruise quand il rencontre un mur
 
     void Start()
     {
@@ -38,7 +39,8 @@ public class WindController : MonoBehaviour
         }
         if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
-            Die();
+            rb.velocity = Vector2.zero;
+            lifetime = timeWhenHittingWall;
         }
     }
 }
