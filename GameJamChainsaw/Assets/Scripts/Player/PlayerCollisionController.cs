@@ -13,6 +13,8 @@ public class PlayerCollisionController : MonoBehaviour
     private Animator eyeAnimator;               // Référence sur l'animator des yeux
     private Animator bodyAnimator;              // Référence sur l'animator du body
 
+    public Canvas gameOverCanvas;
+
     private GameObject ass;
     private GameObject wings;
     private PlayerMovementController playerMovementController;
@@ -56,8 +58,12 @@ public class PlayerCollisionController : MonoBehaviour
         wings.SetActive(false);
         playerMovementController.enabled = false;
         playerRotationController.enabled = false;
+        GameOver();
     }
-
+    void GameOver()
+    {
+        gameOverCanvas.gameObject.SetActive(true);
+    }
     void Update()
     {
         invincibilityTimeLeft -= Time.deltaTime;
