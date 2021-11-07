@@ -523,6 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5673498880159881043}
   - component: {fileID: 569297055829318879}
+  - component: {fileID: 5023013969675678529}
   m_Layer: 10
   m_Name: LeftWing
   m_TagString: Untagged
@@ -595,6 +596,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5023013969675678529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897286523343379046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557debc75c9e8734fbc7fbd6ac609f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstColor: {r: 1, g: 0.827451, b: 0.09803922, a: 1}
+  secondColor: {r: 0.54901963, g: 0.11764706, b: 1, a: 1}
+  thirdColor: {r: 1, g: 0.16078432, b: 0.45882353, a: 1}
+  startTimeBetweenTwoColors: 2
+  sprite: {fileID: 569297055829318879}
 --- !u!1 &7684833916149909251
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,13 +775,52 @@ PrefabInstance:
       value: RightWingPivot
       objectReference: {fileID: 0}
     - target: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b52c98785484be46ae677331f0bab75, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+--- !u!1 &3772148239847327797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2436395563568856740, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+  m_PrefabInstance: {fileID: 1555584712639837841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7091074467090288268 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8646351245380859933, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
+  m_PrefabInstance: {fileID: 1555584712639837841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2330222287214533977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3873114229971233736, guid: dd623e3dfd67db44d92bc1cff3e6d8f5, type: 3}
   m_PrefabInstance: {fileID: 1555584712639837841}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &262386382142683767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772148239847327797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557debc75c9e8734fbc7fbd6ac609f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstColor: {r: 1, g: 0.827451, b: 0.09803922, a: 1}
+  secondColor: {r: 0.54901963, g: 0.11764706, b: 1, a: 1}
+  thirdColor: {r: 1, g: 0.16078432, b: 0.45882353, a: 1}
+  startTimeBetweenTwoColors: 2
+  sprite: {fileID: 7091074467090288268}
