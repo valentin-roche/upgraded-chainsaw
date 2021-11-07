@@ -1,0 +1,12 @@
+name: Main workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-supported-versions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build for supported platforms
+        uses: ./.github/actions/build

@@ -17,7 +17,19 @@ MonoBehaviour:
     count: 3
     startTimeBetweenSpawns: 1
     timeBetweenSpawns: 1
-    leftToSpawn: 3
-    leftToKill: 3
+    leftToSpawn: 0
+    leftToKill: 0
+  - enemyPrefab: {fileID: 7810468054649779526, guid: de664a3ad2adff24bb922876e1f523e9, type: 3}
+    count: 1
+    startTimeBetweenSpawns: 1
+    timeBetweenSpawns: 1
+    leftToSpawn: 0
+    leftToKill: 0
+  - enemyPrefab: {fileID: 7810468054649779526, guid: d4a3bf97c0d2ce94fa667e47d9667eef, type: 3}
+    count: 2
+    startTimeBetweenSpawns: 1
+    timeBetweenSpawns: 1
+    leftToSpawn: 0
+    leftToKill: 0
   startTimeBetweenSpawns: 1
-  timeBetweenSpawns: 0.5085244
+  timeBetweenSpawns: 0.06548503
