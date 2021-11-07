@@ -20,11 +20,11 @@ public class ProjectorController : MonoBehaviour
     [SerializeField]
     private SpriteColor yellowPinkColor;         
     [SerializeField]
-    private SpriteColor yellowPurpleColor;         
+    private SpriteColor yellowBlueColor;         
     [SerializeField]
-    private SpriteColor pinkPurpleColor;
+    private SpriteColor pinkBlueColor;
     [SerializeField]
-    private SpriteColor pinkPurpleYellowColor;
+    private SpriteColor pinkBlueYellowColor;
 
     void Start()
     {
@@ -108,26 +108,26 @@ public class ProjectorController : MonoBehaviour
     private SpriteColor GetColorMix(SpriteColor color1, ProjectorController projectorColor)
     {
         SpriteColor color2 = projectorColor.GetActualColor();
-        if ((color1.color == Colors.Pink || color2.color == Colors.Pink) && (color1.color == Colors.Purple || color2.color == Colors.Purple))
-            return pinkPurpleColor;
+        if ((color1.color == Colors.Pink || color2.color == Colors.Pink) && (color1.color == Colors.Blue || color2.color == Colors.Blue))
+            return pinkBlueColor;
         else if ((color1.color == Colors.Pink || color2.color == Colors.Pink) && (color1.color == Colors.Yellow || color2.color == Colors.Yellow))
             return yellowPinkColor;
-        else if ((color1.color == Colors.Yellow || color2.color == Colors.Yellow) && (color1.color == Colors.Purple || color2.color == Colors.Purple))
-            return yellowPurpleColor;
+        else if ((color1.color == Colors.Yellow || color2.color == Colors.Yellow) && (color1.color == Colors.Blue || color2.color == Colors.Blue))
+            return yellowBlueColor;
         else if (overlapping == 1 && projectorColor.GetOverlapping() == 1)
             return projectorColor.GetActualColor();
         else
-            return pinkPurpleYellowColor;
+            return pinkBlueYellowColor;
     }
 
     private SpriteColor GetColorMixInverse(SpriteColor color1, SpriteColor color2)
     {
-        if (color1.color == Colors.PinkPurpleYellow && color2.color == Colors.Purple)
+        if (color1.color == Colors.PinkBlueYellow && color2.color == Colors.Blue)
             return yellowPinkColor;
-        else if (color1.color == Colors.PinkPurpleYellow && color2.color == Colors.Yellow)
-            return pinkPurpleColor;
+        else if (color1.color == Colors.PinkBlueYellow && color2.color == Colors.Yellow)
+            return pinkBlueColor;
         else 
-            return yellowPurpleColor;
+            return yellowBlueColor;
     }
 
 
@@ -139,7 +139,7 @@ public class ProjectorController : MonoBehaviour
         }
 
         sprite.material.SetColor("_Color", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f, 0.1f));
-        sprite.material.SetColor("_EmissionColor", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f, 0.3f) * 8f);
+        sprite.material.SetColor("_EmissionColor", new Color(colorProj.rgbCode.r / 255f, colorProj.rgbCode.g / 255f, colorProj.rgbCode.b / 255f, 0.1f) * 6f);
     }
 
     public void ChangeProjectorColor(SpriteColor newTrueColor)

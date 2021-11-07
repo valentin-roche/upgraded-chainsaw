@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/HowToPlayMenu.unity
     guid: 1c3a7be475dd40542ad9b9558f0f13c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Integration/SceneIntegration.unity
     guid: 6197867fb13b458428fa05ae662af79d
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 2798a7af22596a740995281b06a19304
   m_configObjects: {}

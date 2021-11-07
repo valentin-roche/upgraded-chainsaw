@@ -43,11 +43,11 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         print(projectileColor);
         if (enemyScriptable.color.color == Colors.White)
             takeDamage = true;
-        else if (enemyScriptable.color.color == Colors.Pink && (projectileColor == Colors.Pink || projectileColor == Colors.PinkPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPink))
+        else if (enemyScriptable.color.color == Colors.Pink && (projectileColor == Colors.Pink || projectileColor == Colors.PinkBlue || projectileColor == Colors.PinkBlueYellow || projectileColor == Colors.YellowPink))
             takeDamage = true;
-        else if (enemyScriptable.color.color == Colors.Purple && (projectileColor == Colors.Purple || projectileColor == Colors.PinkPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPurple))
+        else if (enemyScriptable.color.color == Colors.Blue && (projectileColor == Colors.Blue || projectileColor == Colors.PinkBlue || projectileColor == Colors.PinkBlueYellow || projectileColor == Colors.YellowBlue))
             takeDamage = true;
-        else if (enemyScriptable.color.color == Colors.Yellow && (projectileColor == Colors.Yellow || projectileColor == Colors.YellowPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPink))
+        else if (enemyScriptable.color.color == Colors.Yellow && (projectileColor == Colors.Yellow || projectileColor == Colors.YellowBlue || projectileColor == Colors.PinkBlueYellow || projectileColor == Colors.YellowPink))
             takeDamage = true;
 
 
