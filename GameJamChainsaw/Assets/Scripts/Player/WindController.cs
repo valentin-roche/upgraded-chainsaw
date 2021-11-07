@@ -32,9 +32,9 @@ public class WindController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("HitBoxEnemy"))
         {
-            collision.GetComponent<EnemyCollisionControlerGeneric>().GetPushed(windEffectTime, pushFactor);
+            collision.GetComponent<EnemyCallGetHit>().GetPushed(windEffectTime, pushFactor);
         }
         if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesList:
   - enemyPrefab: {fileID: 7810468054649779526, guid: 99eb545fd2f0f334d83745b9bef55796, type: 3}
-    count: 3
+    count: 1
     startTimeBetweenSpawns: 1
     timeBetweenSpawns: 1
     leftToSpawn: 0
@@ -24,6 +24,6 @@ MonoBehaviour:
     startTimeBetweenSpawns: 1
     timeBetweenSpawns: 1
     leftToSpawn: 0
-    leftToKill: 1
+    leftToKill: 0
   startTimeBetweenSpawns: 1
-  timeBetweenSpawns: 0.5085244
+  timeBetweenSpawns: 0.4629431
