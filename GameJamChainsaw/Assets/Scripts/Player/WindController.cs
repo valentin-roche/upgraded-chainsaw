@@ -11,8 +11,17 @@ public class WindController : MonoBehaviour
     public float pushFactor;
     public float timeWhenHittingWall;                                       // Le temps avant que le projectile se détruise quand il rencontre un mur
 
+    [SerializeField]
+    private Collider2D colliderToIgnore;
+
     void Start()
     {
+        GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in ennemies)
+        {
+            Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), colliderToIgnore);
+        }
+
         rb = gameObject.GetComponentInChildren<Rigidbody2D>();
         rb.velocity = transform.up * speed;
     }
@@ -41,12 +50,12 @@ public class WindController : MonoBehaviour
         {
             lifetime = timeWhenHittingWall;
 
-            Vector3 direction = collision.transform.position - transform.position;
+            /*Vector3 direction = collision.transform.position - transform.position;
             float dot = Vector2.Dot(rb.velocity.normalized, (Vector2)direction.normalized);
             print(dot);
 
             // If on va dans la direction du mur
-            rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;*/
         }
     }
 }

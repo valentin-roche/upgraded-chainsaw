@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 7793698527301305338}
   - component: {fileID: 6080579526732799715}
   - component: {fileID: -4066451743602472341}
+  - component: {fileID: 2284046334504448094}
   - component: {fileID: 6494162030393053051}
   - component: {fileID: 624674218871136439}
   m_Layer: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   windEffectTime: 0.2
   pushFactor: 15
   timeWhenHittingWall: 0.5
+  colliderToIgnore: {fileID: 2284046334504448094}
 --- !u!50 &-4066451743602472341
 Rigidbody2D:
   serializedVersion: 4
@@ -321,6 +323,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &2284046334504448094
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8702812337425973441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.7
 --- !u!58 &6494162030393053051
 CircleCollider2D:
   m_ObjectHideFlags: 0
