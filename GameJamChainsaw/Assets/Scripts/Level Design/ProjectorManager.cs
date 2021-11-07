@@ -5,20 +5,40 @@ using UnityEngine;
 public class ProjectorManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject projector;
+    private GameObject projectorPrefab;
+    private int count = 0;
 
-    public bool shouldSpawnProjector = false;
-    private int waveNumber;
-    private Colors color;
-    private List<GameObject> projectorList = new List<GameObject>();
+    public List<GameObject> projectorList = new List<GameObject>();
 
-    public void SpawnProjector(Colors colorToApply)
+    [SerializeField]
+    private List<SpriteColor> colors;                                       // Les différentes couleurs du jeu
+    private List<SpriteColor> colorsLeft;                                   // Les couleurs pas encore dans la liste des projecteurs
+
+    private void Start()
     {
-        float mX = Random.Range(-17f, 17f);
-        float mY = Random.Range(-8f, 8f);
+       colorsLeft = colors;
+       SpawnProjector();
+       SpawnProjector();
+       SpawnProjector();
+    }
+
+    private void Update()
+    {
+
+    }
+
+    public void SpawnProjector()
+    {
+        float mX = Random.Range(-15f, 15f);
+        float mY = Random.Range(-6f, 6f);
         Vector2 pos = new Vector2(mX, mY);
-        Instantiate(projector, pos, transform.rotation);
-        projector.GetComponent<ProjectorController>().ChangeProjectorColor(colorToApply);
+
+        GameObject projector = Instantiate(projectorPrefab, pos, Quaternion.identity, transform);
+        projector.GetComponent<ProjectorController>().SetId(count);
+        count++;
+        int randInt = Random.Range(0, colorsLeft.Count);
+        projector.GetComponent<ProjectorController>().ChangeProjectorColor(colorsLeft[randInt]);
+        colorsLeft.Remove(colorsLeft[randInt]);
         projectorList.Add(projector);
     }
 }

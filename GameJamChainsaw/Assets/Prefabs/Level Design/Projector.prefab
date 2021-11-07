@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5797613951790264520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +47,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523370f8c004d984da46819b62bb3102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color:
+    color: 0
+    rgbCode:
+      r: 0
+      g: 0
+      b: 0
+  actualColor:
+    color: 0
+    rgbCode:
+      r: 0
+      g: 0
+      b: 0
+  sprite: {fileID: 0}
+  whiteColor:
+    color: 0
+    rgbCode:
+      r: 255
+      g: 255
+      b: 255
+  yellowPinkColor:
+    color: 4
+    rgbCode:
+      r: 255
+      g: 126
+      b: 71
+  yellowPurpleColor:
+    color: 5
+    rgbCode:
+      r: 198
+      g: 121
+      b: 140
+  pinkPurpleColor:
+    color: 6
+    rgbCode:
+      r: 198
+      g: 36
+      b: 186
+  pinkPurpleYellowColor:
+    color: 7
+    rgbCode:
+      r: 217
+      g: 94
+      b: 132
 --- !u!114 &6933931845497003941
 MonoBehaviour:
   m_ObjectHideFlags: 0

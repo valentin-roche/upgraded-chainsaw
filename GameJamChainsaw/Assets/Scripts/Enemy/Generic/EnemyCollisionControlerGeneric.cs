@@ -32,27 +32,42 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
         {
             if(!sprite.CompareTag("Ouin"))
             {
-                sprite.color = new Color(enemyScriptable.color.rgbCode.r/255f, enemyScriptable.color.rgbCode.g/255f, enemyScriptable.color.rgbCode.b/255f);
+                sprite.color = new Color(enemyScriptable.color.rgbCode.r/255f, enemyScriptable.color.rgbCode.g/255f, enemyScriptable.color.rgbCode.b/255f, 1f);
             }
         }
     }
 
     public void GetHit(int damage, Colors projectileColor)
     {
+        bool takeDamage = false;
+        print(projectileColor);
+        if (enemyScriptable.color.color == Colors.White)
+            takeDamage = true;
+        else if (enemyScriptable.color.color == Colors.Pink && (projectileColor == Colors.Pink || projectileColor == Colors.PinkPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPink))
+            takeDamage = true;
+        else if (enemyScriptable.color.color == Colors.Purple && (projectileColor == Colors.Purple || projectileColor == Colors.PinkPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPurple))
+            takeDamage = true;
+        else if (enemyScriptable.color.color == Colors.Yellow && (projectileColor == Colors.Yellow || projectileColor == Colors.YellowPurple || projectileColor == Colors.PinkPurpleYellow || projectileColor == Colors.YellowPink))
+            takeDamage = true;
 
-        if (enemyScriptable.color.color == projectileColor || enemyScriptable.color.color == Colors.White)
+
+        if (takeDamage)
         {
-            currentHealth -= damage;
-
-            hitAnimator.SetBool("shouldGetHit", true);
-
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
+            TakeDamage(damage);
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        hitAnimator.SetBool("shouldGetHit", true);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
     private void Die()
     {
         spawnerController.DeathOfEnnemy(enemyScriptable.id);

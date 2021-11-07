@@ -18,7 +18,7 @@ public class BulletCollisionController : MonoBehaviour
         bulletController = GetComponentInParent<BulletController>();
 
         sprite = GetComponentInChildren<SpriteRenderer>();
-        sprite.color = new Color(color.rgbCode.r / 255f, color.rgbCode.g / 255f, color.rgbCode.b / 255f);
+        sprite.color = new Color(color.rgbCode.r / 255f, color.rgbCode.g / 255f, color.rgbCode.b / 255f, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,6 +40,8 @@ public class BulletCollisionController : MonoBehaviour
     public void SetColor(SpriteColor color)
     {
         this.color = color;
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.color = new Color(color.rgbCode.r / 255f, color.rgbCode.g / 255f, color.rgbCode.b / 255f, 1f);
     }
 
     public SpriteColor GetColor()

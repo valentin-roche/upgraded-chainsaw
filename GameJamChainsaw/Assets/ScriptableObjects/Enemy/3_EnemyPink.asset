@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3_EnemyPink
   m_EditorClassIdentifier: 
   id: 3
-  health: 5
+  health: 1
   speed: 3
   color:
     color: 2

@@ -7,7 +7,11 @@ public enum Colors
     White,
     Yellow,
     Pink,
-    Purple
+    Purple,
+    YellowPink,
+    YellowPurple,
+    PinkPurple,
+    PinkPurpleYellow
 }
 
 [System.Serializable]

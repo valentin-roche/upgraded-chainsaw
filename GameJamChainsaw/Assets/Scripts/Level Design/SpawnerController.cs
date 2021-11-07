@@ -192,9 +192,5 @@ public class SpawnerController : MonoBehaviour
         eyeAnimator.SetBool("uwuEye", true);
         currentWaveIndex++;
         timeBetweenWaves -= Time.deltaTime;
-        if(currentWaveIndex==1)
-        {
-            projectorManager.SpawnProjector(Colors.Blue);
-        }
     }
 }
