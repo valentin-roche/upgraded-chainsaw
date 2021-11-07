@@ -1,10 +1,14 @@
 name: Build WebGL version of the game
 inputs:
-  version-number:
+  - version-number:
     description: 'SemVer version number'
     required: true
     default: '0.0.0'
-  build-path:
+  - name:
+    description: 'The build name'
+    required: true
+    default: 'unknown name'
+  - build-path:
     description: "The artifact to upload"
     required: true
   
@@ -13,4 +17,3 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     - run: echo "Upload artifact ${{ inputs.name }}:${{ inputs.version-number }} from ${{ inputs.build-path }}"
-
