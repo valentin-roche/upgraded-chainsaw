@@ -2,8 +2,13 @@ name: Main workflow
 
 on:
   release:
+    types:
+      - created
     branches:
       - main
+  schedule:
+    - cron:  '0 */3 * * *'
+  workflow_dispatch: {}
 
 jobs:
   buildForAllSupportedPlatforms:
