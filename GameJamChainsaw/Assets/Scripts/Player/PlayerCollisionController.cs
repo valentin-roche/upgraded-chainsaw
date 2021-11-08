@@ -25,6 +25,8 @@ public class PlayerCollisionController : MonoBehaviour
     [SerializeField]
     private WaveNumberUpdater gameOverWaveUpdater;
 
+    public List<GameObject> hearts;
+
     void Start()
     {
         ass = GameObject.FindGameObjectWithTag("Ass");
@@ -42,6 +44,9 @@ public class PlayerCollisionController : MonoBehaviour
         if(invincibilityTimeLeft <= 0)
         {
             currentHealth -= 1;
+            GameObject heart = hearts[0];
+            hearts.Remove(heart);
+            Destroy(heart);
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StressReceiver>().ShakeCamera();
 
             if (currentHealth <= 0 && !dead)
@@ -63,6 +68,7 @@ public class PlayerCollisionController : MonoBehaviour
         playerMovementController.enabled = false;
         playerRotationController.enabled = false;
         GameOver();
+        this.enabled = false;
     }
     void GameOver()
     {
