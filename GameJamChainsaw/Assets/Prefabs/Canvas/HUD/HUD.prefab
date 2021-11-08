@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 64434653412382568}
   - component: {fileID: 64434653412382569}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
