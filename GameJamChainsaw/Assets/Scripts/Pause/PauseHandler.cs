@@ -32,7 +32,7 @@ public class PauseHandler : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
     public void BackToMenu()
     {
