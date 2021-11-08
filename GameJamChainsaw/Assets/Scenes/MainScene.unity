@@ -694,6 +694,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5218632615770347474, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218632615770347485, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5382125007570209073, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -12,6 +12,8 @@ public class BulletCollisionController : MonoBehaviour
 
     private bool dead = false;
 
+    public GameObject effect;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,6 +27,7 @@ public class BulletCollisionController : MonoBehaviour
     {
         if (collision.CompareTag("HitBoxEnemy"))
         {
+            Instantiate(effect, transform.position, Quaternion.identity);
             if (!dead)
             {
                 collision.GetComponent<EnemyCallGetHit>().GetHit(bulletController.damage, color.color);
@@ -33,6 +36,7 @@ public class BulletCollisionController : MonoBehaviour
         }
         if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
         {
+            Instantiate(effect, transform.position, Quaternion.identity);
             Hit();
         }
     }
