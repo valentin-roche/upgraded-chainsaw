@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bf469a7c5c7ce4eba904eb0b9b260c, type: 3}
+  m_Name: wave13
+  m_EditorClassIdentifier: 
+  enemiesList:
+  - enemyPrefab: {fileID: 7810468054649779526, guid: 27419e28cb5ca7042aa54d2e110e3374, type: 3}
+    count: 5
+    startTimeBetweenSpawns: 3
+    timeBetweenSpawns: 0
+    leftToSpawn: 0
+    leftToKill: 0
+  - enemyPrefab: {fileID: 7810468054649779526, guid: 3123c098c1e201b4f9c8fb108520f3d4, type: 3}
+    count: 6
+    startTimeBetweenSpawns: 5
+    timeBetweenSpawns: 0
+    leftToSpawn: 0
+    leftToKill: 0
+  - enemyPrefab: {fileID: 7810468054649779526, guid: b4540f017eac69c4e8645a10eca24852, type: 3}
+    count: 4
+    startTimeBetweenSpawns: 4
+    timeBetweenSpawns: 0
+    leftToSpawn: 0
+    leftToKill: 0
+  startTimeBetweenSpawns: 1.5
+  timeBetweenSpawns: 1
