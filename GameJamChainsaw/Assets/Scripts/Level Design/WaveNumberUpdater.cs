@@ -27,6 +27,7 @@ public class WaveNumberUpdater : MonoBehaviour
         }
         else
         {
+            print("dans le else");
             if(!secondNumberImage.gameObject.active)
                 secondNumberImage.gameObject.SetActive(true);
             firstNumberImage.sprite = numbers[num/10];

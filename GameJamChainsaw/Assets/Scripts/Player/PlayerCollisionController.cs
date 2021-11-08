@@ -42,6 +42,7 @@ public class PlayerCollisionController : MonoBehaviour
         if(invincibilityTimeLeft <= 0)
         {
             currentHealth -= 1;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StressReceiver>().ShakeCamera();
 
             if (currentHealth <= 0 && !dead)
             {
@@ -116,11 +117,11 @@ public class PlayerCollisionController : MonoBehaviour
         ChangeColor(colorToChangeTo);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
             GetHit();
         }
-    }
+    }*/
 }

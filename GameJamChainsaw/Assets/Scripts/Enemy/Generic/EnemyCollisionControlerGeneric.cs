@@ -100,6 +100,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
             {
                 armAnimator.SetBool("shouldAttack", true);
                 timeBetweenAttack -= Time.deltaTime;
+                playerCollisionController.GetComponent<PlayerCollisionController>().GetHit();
             }
         }
 
