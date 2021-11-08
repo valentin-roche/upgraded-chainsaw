@@ -185,8 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6c062aab53ed248829f22099b51708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  invincibilityTime: 2
+  health: 3
+  invincibilityTime: 0.5
+  gameOverCanvas: {fileID: 0}
+  gameOverWaveUpdater: {fileID: 0}
 --- !u!50 &4365567796009991438
 Rigidbody2D:
   serializedVersion: 4
@@ -394,6 +396,7 @@ MonoBehaviour:
       g: 255
       b: 255
   startReloadingTime: 0.2
+  paused: 0
 --- !u!95 &64368413970209366
 Animator:
   serializedVersion: 3

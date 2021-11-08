@@ -13,12 +13,17 @@ public class PlayerCollisionController : MonoBehaviour
     private Animator eyeAnimator;               // Référence sur l'animator des yeux
     private Animator bodyAnimator;              // Référence sur l'animator du body
 
+    public Canvas gameOverCanvas;
+
     private GameObject ass;
     private GameObject wings;
     private PlayerMovementController playerMovementController;
     private PlayerRotationController playerRotationController;
 
     private List<ProjectorController> listProjector = new List<ProjectorController>();
+
+    [SerializeField]
+    private WaveNumberUpdater gameOverWaveUpdater;
 
     void Start()
     {
@@ -57,8 +62,13 @@ public class PlayerCollisionController : MonoBehaviour
         wings.SetActive(false);
         playerMovementController.enabled = false;
         playerRotationController.enabled = false;
+        GameOver();
     }
-
+    void GameOver()
+    {
+        gameOverCanvas.gameObject.SetActive(true);
+        gameOverWaveUpdater.SetWaveNumber(GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().GetCurrentWaveIndex() + 1);
+    }
     void Update()
     {
         invincibilityTimeLeft -= Time.deltaTime;

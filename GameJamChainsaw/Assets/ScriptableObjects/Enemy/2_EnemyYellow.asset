@@ -18,6 +18,6 @@ MonoBehaviour:
   color:
     color: 1
     rgbCode:
-      r: 255
-      g: 211
-      b: 25
+      r: 126
+      g: 255
+      b: 88

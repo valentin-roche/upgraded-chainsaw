@@ -16,7 +16,9 @@ public class SpawnerController : MonoBehaviour
     public int maxIteration = 50;                       // Le nombre d'itération max pour trouver un ennemi à faire spawn.
     private int currentIteration = 0;                   // Le nombre actuel d'itération
 
-    private Animator eyeAnimator;                       // Référence sur l'animator des yeux   
+    private Animator eyeAnimator;                       // Référence sur l'animator des yeux
+    [SerializeField]
+    private WaveNumberUpdater wnu;                      // Reference vers le composant charge de mettre a jouer le num de vague sur l'UI
 
     void Start()
     {
@@ -53,6 +55,8 @@ public class SpawnerController : MonoBehaviour
                 waves[currentWaveIndex].enemiesList[indexEnemy].leftToSpawn = waves[currentWaveIndex].enemiesList[indexEnemy].count;
                 waves[currentWaveIndex].timeBetweenSpawns = waves[currentWaveIndex].startTimeBetweenSpawns;
             }
+
+            wnu.SetWaveNumber(currentWaveIndex+1);
         }
         else
         {
@@ -192,5 +196,10 @@ public class SpawnerController : MonoBehaviour
         eyeAnimator.SetBool("uwuEye", true);
         currentWaveIndex++;
         timeBetweenWaves -= Time.deltaTime;
+    }
+
+    public int GetCurrentWaveIndex()
+    {
+        return currentWaveIndex;
     }
 }
