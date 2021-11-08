@@ -550,16 +550,16 @@ PrefabInstance:
       objectReference: {fileID: 907195006}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.size
-      value: 22
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 5a88995b133d6154ea5dd5af3167d0d5, type: 2}
+      objectReference: {fileID: 11400000, guid: 92ae13836003ca849b9e431c4c1f60a0, type: 2}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 5a88995b133d6154ea5dd5af3167d0d5, type: 2}
+      objectReference: {fileID: 11400000, guid: 92ae13836003ca849b9e431c4c1f60a0, type: 2}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[2]
       value: 
