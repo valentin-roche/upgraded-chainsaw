@@ -117,11 +117,11 @@ public class PlayerCollisionController : MonoBehaviour
         ChangeColor(colorToChangeTo);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
             GetHit();
         }
-    }
+    }*/
 }
