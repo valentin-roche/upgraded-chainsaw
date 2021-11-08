@@ -19,5 +19,5 @@ MonoBehaviour:
     timeBetweenSpawns: 1
     leftToSpawn: 3
     leftToKill: 3
-  startTimeBetweenSpawns: 1
+  startTimeBetweenSpawns: 0.2
   timeBetweenSpawns: 0.5085244

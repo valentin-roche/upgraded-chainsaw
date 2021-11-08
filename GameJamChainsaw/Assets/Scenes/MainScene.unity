@@ -549,17 +549,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 907195006}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1873370770}
+    - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 92ae13836003ca849b9e431c4c1f60a0, type: 2}
+      objectReference: {fileID: 11400000, guid: cd5d3c64a37515647ba6c738caeccb64, type: 2}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 92ae13836003ca849b9e431c4c1f60a0, type: 2}
+      objectReference: {fileID: 11400000, guid: cd5d3c64a37515647ba6c738caeccb64, type: 2}
     - target: {fileID: 455727795241347151, guid: 0e1375d307ff4ae488fc788c1878bcce, type: 3}
       propertyPath: waves.Array.data[2]
       value: 
@@ -1068,6 +1072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1873370770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4149653973888671545, guid: 579a903f7f95ca842b4c6af25901abbb, type: 3}
+  m_PrefabInstance: {fileID: 1700377532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1882811665 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 688442302844816399, guid: 579a903f7f95ca842b4c6af25901abbb, type: 3}
@@ -1240,6 +1249,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2451128076276610139, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743715767735867347, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
+      propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6519115444558244698, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
