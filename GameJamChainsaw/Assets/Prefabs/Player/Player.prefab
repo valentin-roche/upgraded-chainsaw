@@ -189,6 +189,7 @@ MonoBehaviour:
   invincibilityTime: 0.5
   gameOverCanvas: {fileID: 0}
   gameOverWaveUpdater: {fileID: 0}
+  hearts: []
 --- !u!50 &4365567796009991438
 Rigidbody2D:
   serializedVersion: 4
@@ -223,10 +224,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  dashSpeed: 9
-  dashTime: 0.1
+  dashSpeed: 18
+  dashTime: 0.5
   dashReloadTime: 3
   cooldownTextMesh: {fileID: 0}
+  cooldownImage: {fileID: 0}
 --- !u!114 &4365567796009991432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +469,7 @@ MonoBehaviour:
   startingPoint: {fileID: 5802455764938140069}
   startReloadingTimeWings: 2
   cooldownTextMesh: {fileID: 0}
+  cooldownImage: {fileID: 0}
 --- !u!1 &5744706217845846233
 GameObject:
   m_ObjectHideFlags: 0

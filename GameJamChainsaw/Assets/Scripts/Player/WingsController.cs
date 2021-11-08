@@ -55,6 +55,15 @@ public class WingsController : MonoBehaviour
             animator.SetBool("isMoving", toggle);
         }
     }
+
+    public void ToggleDashAnimation(bool toggle)
+    {
+        foreach (Animator animator in wingsAnimator)
+        {
+            animator.SetBool("isDashing", toggle);
+        }
+    }
+
     public void HandleTextChange()
     {
         cooldownTextMesh.gameObject.SetActive(true);

@@ -94,10 +94,12 @@ public class PlayerMovementController : MonoBehaviour
         {
             reloadingTime -= Time.deltaTime;
             dashing = true;
-            dashVelocity = moveVelocity * dashSpeed;
+            dashVelocity = moveVelocity.normalized * dashSpeed;
             dashTimeLeft -= Time.deltaTime;
         }
         HandleTextChange();
+
+        wingsController.ToggleDashAnimation(dashing);
     }
 
     private void FixedUpdate()
