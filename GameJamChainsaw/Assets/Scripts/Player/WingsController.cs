@@ -35,7 +35,7 @@ public class WingsController : MonoBehaviour
             cooldownImage.fillAmount = reloadingTimeWings / startReloadingTimeWings;
             if (reloadingTimeWings <= 0)
             {
-                cooldownImage.fillAmount = 1;
+                cooldownImage.fillAmount = 0;
                 reloadingTimeWings = startReloadingTimeWings;
             }
         }

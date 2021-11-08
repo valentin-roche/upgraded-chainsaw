@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnerController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SpawnerController : MonoBehaviour
     private Animator eyeAnimator;                       // Référence sur l'animator des yeux
     [SerializeField]
     private WaveNumberUpdater wnu;                      // Reference vers le composant charge de mettre a jouer le num de vague sur l'UI
+
+    public GameObject gameOverCanvas;
 
     void Start()
     {
@@ -60,7 +63,10 @@ public class SpawnerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Bravo ! Tu as battu toutes les vagues champion");
+            gameOverCanvas.gameObject.SetActive(true);
+            gameOverCanvas.GetComponentInChildren<WaveNumberUpdater>().SetWaveNumber(GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().GetCurrentWaveIndex() + 1);
+            GameObject.FindGameObjectWithTag("EndText").GetComponent<TextMeshProUGUI>().text = "YOU BEAT THE GAME ALL THE WAY TO";
+            // Ici changer le texte du canvas et le call
         }
     }
 
