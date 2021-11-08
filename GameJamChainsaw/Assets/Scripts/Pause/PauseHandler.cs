@@ -7,6 +7,7 @@ public class PauseHandler : MonoBehaviour
 {
     public Canvas canvas;
     private bool pauseToggle = false;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -17,19 +18,19 @@ public class PauseHandler : MonoBehaviour
                 Time.timeScale = 0;
 
             pauseToggle = !pauseToggle;
-            print(pauseToggle);
-            canvas.gameObject.SetActive(pauseToggle); //MARCHE PAS
+            GameObject.FindGameObjectWithTag("Ass").GetComponent<ShootingAssController>().paused = pauseToggle;
+            canvas.gameObject.SetActive(pauseToggle); 
         }
     }
     public void Continue()
     {
         pauseToggle = false;
+        GameObject.FindGameObjectWithTag("Ass").GetComponent<ShootingAssController>().paused = pauseToggle;
         Time.timeScale = 1;
         canvas.gameObject.SetActive(false);
     }
     public void Retry()
     {
-        //retry logic. On recharge la même scène?
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }

@@ -18,6 +18,8 @@ public class ShootingAssController : MonoBehaviour
 
     public float startReloadingTime;        // Durée de rechargement
     private float reloadingTime;            // Durée restante de rechargement 
+
+    public bool paused = false;
     
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class ShootingAssController : MonoBehaviour
         }
 
         // Si on tire et qu'on est pas en train de recharger, alors on tire vraiment
-        if (Input.GetMouseButtonDown(0) && reloadingTime == startReloadingTime)
+        if (Input.GetMouseButtonDown(0) && reloadingTime == startReloadingTime && !paused)
         {
             Shoot();
             assAnimator.SetBool("shouldShoot", true);
