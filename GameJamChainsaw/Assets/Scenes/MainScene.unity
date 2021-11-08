@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &286653852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3743715767735867347, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
+  m_PrefabInstance: {fileID: 2063362057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &494332406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 64434653473921850, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
@@ -260,9 +271,17 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4365567796009991439, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
+      propertyPath: cooldownImage
+      value: 
+      objectReference: {fileID: 2063362058}
+    - target: {fileID: 4365567796009991439, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
       propertyPath: cooldownTextMesh
       value: 
       objectReference: {fileID: 1804515089}
+    - target: {fileID: 5528662371901093292, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
+      propertyPath: cooldownImage
+      value: 
+      objectReference: {fileID: 286653852}
     - target: {fileID: 5528662371901093292, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
       propertyPath: cooldownTextMesh
       value: 
@@ -1153,6 +1172,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
+--- !u!114 &2063362058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1004699915542972193, guid: 74992487c2f9e2f4c8587eec1460463e, type: 3}
+  m_PrefabInstance: {fileID: 2063362057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2135400585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,60 +1295,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b00a0cbcbbaf8649acbefa9c6e2144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4266342413109195651
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3181023432918934835, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_Name
-      value: DeadEnnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181023432918934838, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerMovementController : MonoBehaviour
@@ -32,6 +33,7 @@ public class PlayerMovementController : MonoBehaviour
     private float dashTimeLeft;
 
     public TextMeshProUGUI cooldownTextMesh;
+    public Image cooldownImage;
 
     void Start()
     {
@@ -79,14 +81,16 @@ public class PlayerMovementController : MonoBehaviour
 
         if (reloadingTime < dashReloadTime)
         {
+            cooldownImage.fillAmount = reloadingTime / dashReloadTime;
             reloadingTime -= Time.deltaTime;
             if (reloadingTime <= 0)
             {
                 reloadingTime = dashReloadTime;
+                cooldownImage.fillAmount = 0;
             }
         }
 
-        if (Input.GetMouseButtonDown(2) && reloadingTime == dashReloadTime)
+        if (Input.GetMouseButtonDown(2) && reloadingTime == dashReloadTime && moveVelocity != Vector2.zero)
         {
             reloadingTime -= Time.deltaTime;
             dashing = true;

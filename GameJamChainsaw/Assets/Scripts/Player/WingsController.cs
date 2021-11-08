@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WingsController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class WingsController : MonoBehaviour
     private float reloadingTimeWings;            // Durée restante de rechargement du coup d'ailes
 
     public TextMeshProUGUI cooldownTextMesh;
+    public Image cooldownImage;
 
     private Animator[] wingsAnimator;            // Références sur les animators des ailes
 
@@ -30,8 +32,10 @@ public class WingsController : MonoBehaviour
         if (reloadingTimeWings < startReloadingTimeWings)
         {
             reloadingTimeWings -= Time.deltaTime;
+            cooldownImage.fillAmount = reloadingTimeWings / startReloadingTimeWings;
             if (reloadingTimeWings <= 0)
             {
+                cooldownImage.fillAmount = 1;
                 reloadingTimeWings = startReloadingTimeWings;
             }
         }
