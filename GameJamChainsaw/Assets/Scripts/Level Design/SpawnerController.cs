@@ -56,7 +56,7 @@ public class SpawnerController : MonoBehaviour
                 waves[currentWaveIndex].timeBetweenSpawns = waves[currentWaveIndex].startTimeBetweenSpawns;
             }
 
-            wnu.SetWaveNumber((currentWaveIndex+1).ToString());
+            wnu.SetWaveNumber(currentWaveIndex+1);
         }
         else
         {
