@@ -224,6 +224,7 @@ MonoBehaviour:
   dashSpeed: 9
   dashTime: 0.1
   dashReloadTime: 3
+  cooldownTextMesh: {fileID: 0}
 --- !u!114 &4365567796009991432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +463,7 @@ MonoBehaviour:
   playerTransform: {fileID: 4365567796009991437}
   startingPoint: {fileID: 5802455764938140069}
   startReloadingTimeWings: 2
+  cooldownTextMesh: {fileID: 0}
 --- !u!1 &5744706217845846233
 GameObject:
   m_ObjectHideFlags: 0
