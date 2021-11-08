@@ -197,4 +197,9 @@ public class SpawnerController : MonoBehaviour
         currentWaveIndex++;
         timeBetweenWaves -= Time.deltaTime;
     }
+
+    public int GetCurrentWaveIndex()
+    {
+        return currentWaveIndex;
+    }
 }

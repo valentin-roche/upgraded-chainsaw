@@ -269,12 +269,16 @@ PrefabInstance:
       objectReference: {fileID: 494332406}
     - target: {fileID: 6935382482345127484, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
       propertyPath: health
-      value: 1000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6935382482345127484, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 1700377533}
+    - target: {fileID: 6935382482345127484, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
+      propertyPath: gameOverWaveUpdater
+      value: 
+      objectReference: {fileID: 1882811665}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd1b0e858107814881926c8ef609a69, type: 3}
 --- !u!1001 &841914409
@@ -979,6 +983,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1882811665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 688442302844816399, guid: 579a903f7f95ca842b4c6af25901abbb, type: 3}
+  m_PrefabInstance: {fileID: 1700377532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55adb93905840154593dfc1cfba69b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2063362057

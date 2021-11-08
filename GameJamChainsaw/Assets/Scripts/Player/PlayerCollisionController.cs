@@ -22,6 +22,9 @@ public class PlayerCollisionController : MonoBehaviour
 
     private List<ProjectorController> listProjector = new List<ProjectorController>();
 
+    [SerializeField]
+    private WaveNumberUpdater gameOverWaveUpdater;
+
     void Start()
     {
         ass = GameObject.FindGameObjectWithTag("Ass");
@@ -63,6 +66,7 @@ public class PlayerCollisionController : MonoBehaviour
     void GameOver()
     {
         gameOverCanvas.gameObject.SetActive(true);
+        gameOverWaveUpdater.SetWaveNumber(GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().GetCurrentWaveIndex() + 1);
     }
     void Update()
     {
