@@ -668,6 +668,7 @@ MonoBehaviour:
   armAnimator: {fileID: 1312750167048111320}
   hitAnimator: {fileID: 5794803151754610061}
   startTimeBetweenAttack: 1
+  effect: {fileID: 3181023432918934835, guid: b34b37e88ac7a4a449f47fff5c9ea4c2, type: 3}
 --- !u!50 &7810468054649779529
 Rigidbody2D:
   serializedVersion: 4

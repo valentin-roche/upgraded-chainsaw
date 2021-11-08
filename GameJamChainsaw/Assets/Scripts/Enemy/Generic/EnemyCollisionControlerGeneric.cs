@@ -20,6 +20,8 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     public float startTimeBetweenAttack = 1f;
     private float timeBetweenAttack;
 
+    public GameObject effect;
+
     void Start()
     {
         timeBetweenAttack = startTimeBetweenAttack;
@@ -70,6 +72,7 @@ public class EnemyCollisionControlerGeneric : MonoBehaviour
     }
     private void Die()
     {
+        Instantiate(effect, transform.position, Quaternion.identity);
         spawnerController.DeathOfEnnemy(enemyScriptable.id);
         Destroy(gameObject);
     }
